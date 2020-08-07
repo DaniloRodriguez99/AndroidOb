@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/fondo"
         android:orientation="vertical">
 
@@ -52,6 +52,8 @@
                 android:background="@drawable/inputs"
                 android:elevation="5dp"
                 android:hint="Usuario"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
                 android:paddingHorizontal="40dp"
                 app:layout_anchor="@+id/linearLayout"
                 app:layout_anchorGravity="center" />
@@ -63,6 +65,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/inputs"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
                 android:elevation="5dp"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
