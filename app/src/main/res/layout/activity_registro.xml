@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Presentacion.Registro">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+    <LinearLayout
+        android:id="@+id/lytContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/menu_blanco" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/modak"
+                android:gravity="center"
+                android:text="Registro"
+                android:textColor="#000000"
+                android:textSize="40dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/inputUsuarioR"
+                android:layout_width="268dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="7.5dp"
+                android:background="@drawable/inputs"
+                android:hint="Usuario"
+                android:paddingHorizontal="40dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff" />
+
+            <EditText
+                android:id="@+id/inputContra1R"
+                android:layout_width="268dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="7.5dp"
+                android:background="@drawable/inputs"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:paddingHorizontal="40dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff" />
+
+            <EditText
+                android:id="@+id/inputContra2R"
+                android:layout_width="268dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="7.5dp"
+                android:background="@drawable/inputs"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:paddingHorizontal="40dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff" />
+
+            <EditText
+                android:id="@+id/inputEmailR"
+                android:layout_width="268dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:layout_marginVertical="7.5dp"
+                android:background="@drawable/inputs"
+                android:hint="Email"
+                android:inputType="textWebEmailAddress"
+                android:paddingHorizontal="40dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff" />
+
+            <Button
+                android:id="@+id/btnRegistro"
+                android:layout_width="268dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btnlogin"
+                android:fontFamily="@font/roboto"
+                android:text="Aceptar"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="Ya tienes cuenta?"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="Logeate"
+                android:textColor="#597CFF"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/checkload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_fileName="Checkload.json"
+        app:lottie_imageAssetsFolder="assets"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/checkAnimacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_fileName="Check.json"
+        app:lottie_imageAssetsFolder="assets"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/notcheckAnimacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_fileName="unCheck.json"
+        app:lottie_imageAssetsFolder="assets"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+</RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="20dp"
+        android:backgroundTint="#62E45D"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
