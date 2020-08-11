@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.obligatorio.MainActivity;
+import com.example.obligatorio.Preguntado;
 import com.example.obligatorio.R;
 
 
@@ -39,7 +40,7 @@ public class Load extends AppCompatActivity {
 
     public void load() {
 
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, Preguntado.class);
         startActivity(i);
     }
     public void play(){
