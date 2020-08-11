@@ -30,4 +30,13 @@ public class Controladora {
         return false;
     }
 
+    public boolean Login(Usuario pUsuario){
+        for (Usuario unUsuario: Usuarios) {
+            if(unUsuario.get_pass().equals(pUsuario.get_pass()) && unUsuario.get_user().equals(pUsuario.get_user()))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

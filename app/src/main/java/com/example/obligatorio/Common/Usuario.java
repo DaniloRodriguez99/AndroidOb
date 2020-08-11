@@ -11,6 +11,10 @@ public class Usuario extends Persona implements Serializable {
         this.email = _email;
     }
 
+    public Usuario(String _user, String _pass) {
+        super(_user, _pass);
+    }
+
     public String getEmail() {
         return email;
     }

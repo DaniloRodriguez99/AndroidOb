@@ -17,7 +17,6 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.obligatorio.Common.Usuario;
 import com.example.obligatorio.Dominio.Controladora;
-import com.example.obligatorio.MainActivity;
 import com.example.obligatorio.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -88,53 +87,60 @@ public class Registro extends AppCompatActivity {
 
                     if (control.AltaUsuario(unUsuario)) {
 
-                        content.setVisibility(View.INVISIBLE);
-                        checkloadAnimation.setVisibility(View.VISIBLE);
+                        content.startAnimation(fadeOut);
+                        content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
+                        checkloadAnimation.setAnimation(fadeIn);
+                        checkloadAnimation.setVisibility(View.VISIBLE); /*Hacemos visible la primera animacion que es una animacion de carga*/
                         checkloadAnimation.playAnimation();
 
                         final Handler h = new Handler();
                         h.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                checkloadAnimation.setVisibility(View.INVISIBLE);
-                                checkAnimation.setVisibility(View.VISIBLE);
+                                checkloadAnimation.setVisibility(View.INVISIBLE);/*Hacemos invisible la animacion load */
+                                checkAnimation.setVisibility(View.VISIBLE); /*y hacemos aparecer la animacion check*/
                                 checkAnimation.playAnimation();
                                 h.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
+                                        checkAnimation.startAnimation(fadeOut);
+                                        checkAnimation.setVisibility(View.INVISIBLE); /*hacmeos invisible la animacion*/
+                                        content.startAnimation(fadeIn); /* hacemos reaparecer el layout container con un animacion de fade in*/
                                         content.setVisibility(View.VISIBLE);
-                                        content.startAnimation(fadeIn);
-                                        checkAnimation.setVisibility(View.INVISIBLE);
+
                                     }
                                 }, 2500);
                             }
                         }, 1000);
                     }
-                    else{
-                            content.setVisibility(View.INVISIBLE);
-                            checkloadAnimation.setVisibility(View.VISIBLE);
-                            checkloadAnimation.playAnimation();
+                } else {
+                    content.startAnimation(fadeOut);
+                    content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
+                    checkloadAnimation.setAnimation(fadeIn);
+                    checkloadAnimation.setVisibility(View.VISIBLE);/*Hacemos visible la primera animacion que es una animacion de carga*/
+                    checkloadAnimation.playAnimation();
 
-                            final Handler h = new Handler();
+                    final Handler h = new Handler();
+                    h.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            checkloadAnimation.setVisibility(View.INVISIBLE);/*Hacemos invisible la animacion load */
+                            uncheckAnimation.setVisibility(View.VISIBLE);/*y hacemos aparecer la animacion check*/
+                            uncheckAnimation.playAnimation();
                             h.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    checkloadAnimation.setVisibility(View.INVISIBLE);
-                                    uncheckAnimation.setVisibility(View.VISIBLE);
-                                    uncheckAnimation.playAnimation();
-                                    h.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            content.setVisibility(View.VISIBLE);
-                                            content.startAnimation(fadeIn);
-                                            uncheckAnimation.setVisibility(View.INVISIBLE);
-                                        }
-                                    }, 2500);
+                                    uncheckAnimation.startAnimation(fadeOut);
+                                    uncheckAnimation.setVisibility(View.INVISIBLE); /*hacmeos invisible la animacion*/
+                                    content.startAnimation(fadeIn); /* hacemos reaparecer el layout container con un animacion de fade in*/
+                                    content.setVisibility(View.VISIBLE);
+
                                 }
-                            }, 1000);
+                            }, 2500);
                         }
-                    }
+                    }, 1000);
                 }
-            });
-        }
+            }
+        });
     }
+}

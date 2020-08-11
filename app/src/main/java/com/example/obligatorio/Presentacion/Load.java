@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.obligatorio.MainActivity;
-import com.example.obligatorio.Preguntado;
 import com.example.obligatorio.R;
 
 

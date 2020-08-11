@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Preguntado">
+    tools:context=".Presentacion.Preguntado">
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@drawable/fondo"
-        android:id="@+id/linearLayout1"
+        android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -19,36 +19,113 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:id="@+id/imgRuleta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="50dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ruleta" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/btnGirar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:onClick="onClickButtonRotation"
+                    android:src="@drawable/icongirar" />
+            </RelativeLayout>
+
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:id="@+id/imgRuleta"
-                android:adjustViewBounds="true"
+                android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="110dp"
-                android:src="@drawable/ruleta" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="90dp"
                 android:layout_marginTop="-20dp"
-                android:layout_centerHorizontal="true"
                 android:adjustViewBounds="true"
                 android:src="@drawable/puntero" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClickButtonRotation"
-                android:id="@+id/btnGirar"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:src="@drawable/icongirar" />
-
         </RelativeLayout>
-    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/modak"
+                android:gravity="center"
+                android:text="Puntuacion: 80"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtPregunta"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="50dp"
+                android:background="@drawable/preguntas"
+                android:paddingTop="15dp"
+                android:text="Pregunta"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/btnRespuesta1"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/respuestas"
+                android:text="Pregunta"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/btnRespuesta2"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/respuestas"
+                android:text="Pregunta"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/btnRespuesta3"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/respuestas"
+                android:text="Pregunta"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="40dp"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_volver"
+        android:backgroundTint="@color/verde"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

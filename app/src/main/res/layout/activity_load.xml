@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentacion.Load"
-    android:background="@drawable/fondo">
+    tools:context=".Presentacion.Load">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"

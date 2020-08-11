@@ -8,13 +8,13 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondo">
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/lytContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/fondo">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,6 +66,7 @@
                 android:layout_marginVertical="7.5dp"
                 android:background="@drawable/inputs"
                 android:hint="Usuario"
+                android:inputType="textPersonName"
                 android:paddingHorizontal="40dp"
                 android:textColor="#fff"
                 android:textColorHint="#fff" />

@@ -1,4 +1,4 @@
-package com.example.obligatorio;
+package com.example.obligatorio.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.obligatorio.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Random;
