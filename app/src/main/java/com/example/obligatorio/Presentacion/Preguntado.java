@@ -2,6 +2,7 @@ package com.example.obligatorio.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Random;
 
 public class Preguntado extends AppCompatActivity implements Animation.AnimationListener {
+
 boolean blnButtonRotation = true;
 int intNumber = 4;
 int NumeroTipo;
@@ -51,6 +53,9 @@ ImageView imageRoulette;
         toast.setGravity(49,0,0);
         toast.show();
         btnGirar.setVisibility(View.VISIBLE);
+
+        Intent i = new Intent(this, Pregunta.class);
+        startActivity(i);
     }
 
     @Override
