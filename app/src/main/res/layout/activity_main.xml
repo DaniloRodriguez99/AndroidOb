@@ -54,6 +54,7 @@
                 android:elevation="5dp"
                 android:hint="Usuario"
                 android:paddingHorizontal="40dp"
+                android:inputType="textPersonName"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 app:layout_anchor="@+id/linearLayout"

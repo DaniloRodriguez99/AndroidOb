@@ -38,7 +38,7 @@ public class Load extends AppCompatActivity {
 
     public void load() {
 
-        Intent i = new Intent(this, Preguntado.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
     public void play(){

@@ -1,22 +1,22 @@
 package com.example.obligatorio.Presentacion;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.os.Handler;
-        import android.view.View;
-        import android.view.animation.Animation;
-        import android.view.animation.AnimationUtils;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.LinearLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
-        import com.airbnb.lottie.LottieAnimationView;
-        import com.example.obligatorio.Common.Usuario;
-        import com.example.obligatorio.Dominio.Controladora;
-        import com.example.obligatorio.R;
-        import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.airbnb.lottie.LottieAnimationView;
+import com.example.obligatorio.Common.Usuario;
+import com.example.obligatorio.Dominio.Controladora;
+import com.example.obligatorio.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*Animaciones*/
         final Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
-        final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
 
         /*Lottie Animaciones*/
         check = (LottieAnimationView) findViewById(R.id.animacionCheck);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         /*Handler*/
         handler = new Handler();
 
-        fab.setOnClickListener(new View.OnClickListener(){
+        fab.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 String usuario = txtUsuario.getText().toString().trim();
                 String contra = txtContra.getText().toString().trim();
                 Controladora control = new Controladora();
-                Usuario unUsuario = new Usuario(usuario,contra);
-                if(control.Login(unUsuario)){
+                Usuario unUsuario = new Usuario(usuario, contra);
+                if (control.Login(unUsuario)) {
 
                     lytContent.startAnimation(fadeOut);
                     lytContent.setVisibility(View.INVISIBLE);
@@ -87,10 +87,12 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            lytCheck.startAnimation(fadeOut);
-                            lytCheck.setVisibility(View.INVISIBLE);
                             lytContent.startAnimation(fadeIn);
                             lytContent.setVisibility(View.VISIBLE);
+                            lytCheck.startAnimation(fadeOut);
+                            lytCheck.setVisibility(View.INVISIBLE);
+                            Intent i = new Intent(MainActivity.this, CrearMascota.class);
+                            startActivity(i);
                         }
                     }, 2500);
 

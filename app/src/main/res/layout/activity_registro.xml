@@ -61,7 +61,7 @@
             <EditText
                 android:id="@+id/inputUsuarioR"
                 android:layout_width="268dp"
-                android:layout_height="39dp"
+                android:layout_height="41dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="7.5dp"
                 android:background="@drawable/inputs"
@@ -74,7 +74,7 @@
             <EditText
                 android:id="@+id/inputContra1R"
                 android:layout_width="268dp"
-                android:layout_height="39dp"
+                android:layout_height="41dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="7.5dp"
                 android:background="@drawable/inputs"
@@ -87,7 +87,7 @@
             <EditText
                 android:id="@+id/inputContra2R"
                 android:layout_width="268dp"
-                android:layout_height="39dp"
+                android:layout_height="41dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="7.5dp"
                 android:background="@drawable/inputs"
@@ -100,7 +100,7 @@
             <EditText
                 android:id="@+id/inputEmailR"
                 android:layout_width="268dp"
-                android:layout_height="39dp"
+                android:layout_height="41dp"
                 android:layout_gravity="center"
                 android:layout_marginVertical="7.5dp"
                 android:background="@drawable/inputs"

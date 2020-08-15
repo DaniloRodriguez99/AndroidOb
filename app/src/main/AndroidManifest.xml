@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/icono_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Presentacion.Pregunta"></activity>
-        <activity android:name=".Presentacion.Preguntado"></activity>
+        <activity android:name=".Presentacion.CrearMascota"></activity>
+        <activity android:name=".Presentacion.Pregunta" />
+        <activity android:name=".Presentacion.Preguntado" />
         <activity android:name=".Presentacion.Registro" />
         <activity android:name=".Presentacion.Load">
             <intent-filter>
