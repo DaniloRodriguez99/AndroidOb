@@ -43,7 +43,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <ImageView
                     android:id="@+id/imgMascota_CrearMascota"
@@ -51,7 +52,9 @@
                     android:layout_height="150dp"
                     android:layout_centerInParent="true"
                     android:layout_margin="0dp"
-                    android:paddingTop="0dp" />
+                    android:paddingTop="0dp"
+
+                    />
 
                 <ImageButton
                     android:layout_width="wrap_content"
