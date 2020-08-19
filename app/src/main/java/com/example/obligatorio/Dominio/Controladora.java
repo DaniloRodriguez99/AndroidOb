@@ -1,33 +1,31 @@
 package com.example.obligatorio.Dominio;
 
+import android.content.Context;
+
 import com.example.obligatorio.Common.Usuario;
+import com.example.obligatorio.Persistencia.pUsuario;
 
 import java.util.ArrayList;
 
 public class Controladora {
 
+    private pUsuario usuarioPersistente;
+
+    public Controladora(Context contexto)
+    {
+        usuarioPersistente = new pUsuario(contexto);
+    }
+    public Controladora(){}
+
     public static ArrayList<Usuario> Usuarios = new ArrayList<>();
 
-    public Usuario BuscarUsuario(Usuario pUser){
-        for (Usuario unUsuario: Usuarios) {
-            if(unUsuario.get_user().equals(pUser.get_user()))
-            {
-                return unUsuario;
-            }
-            if(unUsuario.getEmail().equals(pUser.getEmail()))
-            {
-                return unUsuario;
-            }
-        }
-        return null;
+    public Usuario BuscarUsuario(Usuario pUser)
+    {
+        return usuarioPersistente.BuscarUsuarioConContraseña(pUser);
     }
 
     public boolean AltaUsuario(Usuario pUser){
-        if(BuscarUsuario(pUser) == null){
-            Usuarios.add(pUser);
-            return true;
-        }
-        return false;
+        return usuarioPersistente.AltaUsuario(pUser);
     }
 
     public boolean Login(Usuario pUsuario){

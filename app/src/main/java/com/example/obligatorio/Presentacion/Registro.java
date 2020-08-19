@@ -75,7 +75,7 @@ public class Registro extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Controladora control = new Controladora();
+                Controladora control = new Controladora(getBaseContext());
 
                 if (contra1.getText().toString().trim().equals(contra2.getText().toString().trim())) {
 

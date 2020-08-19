@@ -12,6 +12,10 @@ public class Persona implements Serializable {
         this._pass = _pass;
     }
 
+    public Persona() {
+
+    }
+
     public String get_user() {
         return _user;
     }

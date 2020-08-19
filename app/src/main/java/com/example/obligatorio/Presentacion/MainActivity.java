@@ -73,9 +73,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String usuario = txtUsuario.getText().toString().trim();
                 String contra = txtContra.getText().toString().trim();
-                Controladora control = new Controladora();
+                Controladora control = new Controladora(getBaseContext());
                 Usuario unUsuario = new Usuario(usuario, contra);
-                if (control.Login(unUsuario)) {
+                unUsuario = control.BuscarUsuario(unUsuario);
+                if(unUsuario != null) {
 
                     lytContent.startAnimation(fadeOut);
                     lytContent.setVisibility(View.INVISIBLE);
