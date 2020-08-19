@@ -96,35 +96,35 @@
             android:layout_marginTop="20dp">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnPerro_CrearMascota"
                 android:layout_width="57dp"
                 android:layout_height="57dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="74dp"
-                android:backgroundTint="#fff"
                 android:src="@drawable/ic_perro" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnOso_CrearMascota"
                 android:layout_width="57dp"
                 android:layout_height="57dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="222dp"
-                android:backgroundTint="#fff"
                 android:src="@drawable/ic_oso" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnGato_CrearMascota"
                 android:layout_width="57dp"
                 android:layout_height="57dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="74dp"
-                android:backgroundTint="#fff"
                 android:src="@drawable/ic_gato" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnPez_CrearMascota"
                 android:layout_width="57dp"
                 android:layout_height="57dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="222dp"
-                android:backgroundTint="#fff"
                 android:src="@drawable/ic_pez" />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
