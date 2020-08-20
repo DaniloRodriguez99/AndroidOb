@@ -19,22 +19,12 @@ public class Controladora {
 
     public static ArrayList<Usuario> Usuarios = new ArrayList<>();
 
-    public Usuario BuscarUsuario(Usuario pUser)
+    public Usuario Login(Usuario pUser)
     {
-        return usuarioPersistente.BuscarUsuarioConContraseña(pUser);
+        return usuarioPersistente.Login(pUser);
     }
 
     public boolean AltaUsuario(Usuario pUser){
         return usuarioPersistente.AltaUsuario(pUser);
-    }
-
-    public boolean Login(Usuario pUsuario){
-        for (Usuario unUsuario: Usuarios) {
-            if(unUsuario.get_pass().equals(pUsuario.get_pass()) && unUsuario.get_user().equals(pUsuario.get_user()))
-            {
-                return true;
-            }
-        }
-        return false;
     }
 }

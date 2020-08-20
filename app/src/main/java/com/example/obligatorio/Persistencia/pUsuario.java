@@ -11,9 +11,10 @@ public class pUsuario extends pConexion {
     {
         try
         {
-            this.ModificarDatos("Insert into Usuario(usuario,contrasenia,email) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "');");
+            this.ModificarDatos("Insert into Usuario(usuario,contrasenia,email) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "')");
             return true;
-        }catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             throw new Error(ex.getMessage());
         }
@@ -29,6 +30,7 @@ public class pUsuario extends pConexion {
         {
             throw new Error(ex.getMessage());
         }
+
         return true;
     }
 
@@ -44,12 +46,12 @@ public class pUsuario extends pConexion {
         return true;
     }
 
-    public Usuario BuscarUsuarioConContraseña(Usuario pusuario)
+    public Usuario Login (Usuario pusuario)
     {
 
         try
         {
-            this.seleccionarDatos("Select idusuario,usuario,contrasenia,email,admin from Usuario where usuario = '" + pusuario.get_user() + "' and contrasenia = '" + pusuario.get_pass() + "');");
+            this.seleccionarDatos("Select idusuario,usuario,contrasenia,email,admin from Usuario where usuario = '" + pusuario.get_user() + "' and contrasenia = '" + pusuario.get_pass() + "')");
 
             while(!c.isAfterLast())
             {

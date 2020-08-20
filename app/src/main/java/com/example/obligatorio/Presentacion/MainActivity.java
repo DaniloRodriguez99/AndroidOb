@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 String contra = txtContra.getText().toString().trim();
                 Controladora control = new Controladora(getBaseContext());
                 Usuario unUsuario = new Usuario(usuario, contra);
-                unUsuario = control.BuscarUsuario(unUsuario);
+                unUsuario = control.Login(unUsuario);
                 if(unUsuario != null) {
 
                     lytContent.startAnimation(fadeOut);
