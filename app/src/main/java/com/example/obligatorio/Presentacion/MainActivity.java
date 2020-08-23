@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout lytContent;
     private LinearLayout lytCheck;
     private LottieAnimationView check;
-
+    Usuario unUsuario;
     private Handler handler;
 
     @Override
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 String usuario = txtUsuario.getText().toString().trim();
                 String contra = txtContra.getText().toString().trim();
                 final Controladora control = new Controladora(getBaseContext());
-                Usuario unUsuario = new Usuario(usuario, contra);
+                unUsuario = new Usuario(usuario, contra);
                 unUsuario = control.Login(unUsuario);
                 if(unUsuario != null) {
 
@@ -92,14 +92,19 @@ public class MainActivity extends AppCompatActivity {
                             lytContent.setVisibility(View.VISIBLE);
                             lytCheck.startAnimation(fadeOut);
                             lytCheck.setVisibility(View.INVISIBLE);
-                            if(control.BuscarMasctoasDeUnUsuario().size() > 0) {
-                                Intent i = new Intent(MainActivity.this, Mascotas.class);
+                            if(unUsuario.get_admin() == true)
+                            {
+                                Intent i = new Intent(MainActivity.this, Administracion.class);
                                 startActivity(i);
                             }
-                            else
-                            {
-                                Intent i = new Intent(MainActivity.this, CrearMascota.class);
-                                startActivity(i);
+                            else if(unUsuario.get_admin() == false) {
+                                if (control.BuscarMasctoasDeUnUsuario().size() > 0) {
+                                    Intent i = new Intent(MainActivity.this, Mascotas.class);
+                                    startActivity(i);
+                                } else {
+                                    Intent i = new Intent(MainActivity.this, CrearMascota.class);
+                                    startActivity(i);
+                                }
                             }
                         }
                     }, 2500);

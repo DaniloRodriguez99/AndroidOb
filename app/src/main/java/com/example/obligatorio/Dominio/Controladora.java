@@ -40,6 +40,10 @@ public class Controladora {
     public boolean AltaUsuario(Usuario pUser){
         return usuarioPersistente.AltaUsuario(pUser);
     }
+    public boolean AltaAdmin(Usuario pUser){
+        return usuarioPersistente.AltaAdmin(pUser);
+    }
+
 
     public boolean altaMascota(String mascotaNombre, String tipo)
     {

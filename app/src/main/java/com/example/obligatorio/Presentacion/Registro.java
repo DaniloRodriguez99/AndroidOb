@@ -82,7 +82,6 @@ public class Registro extends AppCompatActivity {
                     String user = usuario.getText().toString();
                     String contra = contra1.getText().toString();
                     String mail = email.getText().toString();
-
                     Usuario unUsuario = new Usuario(user, contra, mail);
 
                     if (control.AltaUsuario(unUsuario)) {

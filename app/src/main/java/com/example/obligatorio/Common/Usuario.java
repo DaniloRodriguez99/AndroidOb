@@ -2,11 +2,29 @@ package com.example.obligatorio.Common;
 
 import java.io.Serializable;
 
-public class Usuario extends Persona implements Serializable {
+public class Usuario implements Serializable {
 
     private int _id;
+    private String _user;
+    private String _pass;
     private String _email;
     private Boolean _admin;
+
+    public String get_user() {
+        return _user;
+    }
+
+    public void set_user(String _user) {
+        this._user = _user;
+    }
+
+    public String get_pass() {
+        return _pass;
+    }
+
+    public void set_pass(String _pass) {
+        this._pass = _pass;
+    }
 
     public int get_id() {
         return _id;
@@ -33,23 +51,34 @@ public class Usuario extends Persona implements Serializable {
     }
 
     public Usuario(int pId, String pUser, String pPass, String pEmail, Boolean pAdmin) {
-        super(pUser, pPass);
         this._id = pId;
+        this._user = pUser;
+        this._pass = pPass;
         this._email = pEmail;
         this._admin = pAdmin;
     }
 
-    public Usuario(String _user, String _pass) {
-        super(_user, _pass);
+    public Usuario(String pUser, String pPass, String pEmail, Boolean pAdmin) {
+        this._user = pUser;
+        this._pass = pPass;
+        this._email = pEmail;
+        this._admin = pAdmin;
     }
 
-    public Usuario(String _user, String _pass, String pEmail){
-        super(_user, _pass);
+    public Usuario(String pUser, String pPass)
+    {
+        this._user = pUser;
+        this._pass = pPass;
+    }
+
+    public Usuario(String pUser, String pPass, String pEmail){
+        this._user = pUser;
+        this._pass = pPass;
         this._email = pEmail;
     }
 
-    public Usuario(){
-        super();
+    public Usuario()
+    {
     }
 
 }

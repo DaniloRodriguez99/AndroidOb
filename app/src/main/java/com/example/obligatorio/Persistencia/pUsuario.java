@@ -11,7 +11,25 @@ public class pUsuario extends pConexion {
     {
         try
         {
-            this.ModificarDatos("Insert into usuario(user,pass,email,admin) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "','no')");
+            this.ModificarDatos("Insert into usuario(user,pass,email) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "');");
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new Error(ex.getMessage());
+        }
+    }
+
+    public boolean AltaAdmin(Usuario pusuario)
+    {
+        String admin = "0";
+        if(pusuario.get_admin().toString().equals("true"))
+        {
+                admin = "1";
+        }
+        try
+        {
+            this.ModificarDatos("Insert into usuario(user,pass,email,admin) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "','" + admin + "');");
             return true;
         }
         catch (Exception ex)
@@ -32,7 +50,11 @@ public class pUsuario extends pConexion {
                 unUsuario.set_user(c.getString(1));
                 unUsuario.set_pass(c.getString(2));
                 unUsuario.set_email(c.getString(3));
-                unUsuario.set_admin(Boolean.parseBoolean(c.getString(4)));
+                if(c.getString(4).equals("1"))
+                {
+                    unUsuario.set_admin(true);
+                }else
+                if(c.getString(4).equals("0")){unUsuario.set_admin(false); }
                 c.close();
                 return unUsuario;
             }
@@ -57,7 +79,11 @@ public class pUsuario extends pConexion {
                 unUsuario.set_user(c.getString(1));
                 unUsuario.set_pass(c.getString(2));
                 unUsuario.set_email(c.getString(3));
-                unUsuario.set_admin(Boolean.parseBoolean(c.getString(4)));
+                if(c.getString(4).equals("1"))
+                {
+                    unUsuario.set_admin(true);
+                }else
+                    if(c.getString(4).equals("0")){unUsuario.set_admin(false); }
                 c.close();
                 return unUsuario;
             }
