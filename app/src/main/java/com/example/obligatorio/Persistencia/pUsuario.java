@@ -19,24 +19,6 @@ public class pUsuario extends pConexion {
             throw new Error(ex.getMessage());
         }
     }
-
-    public boolean AltaAdmin(Usuario pusuario)
-    {
-        String admin = "0";
-        if(pusuario.get_admin().toString().equals("true"))
-        {
-                admin = "1";
-        }
-        try
-        {
-            this.ModificarDatos("Insert into usuario(user,pass,email,admin) values('" + pusuario.get_user() + "','" + pusuario.get_pass() + "', '" + pusuario.get_email() + "','" + admin + "');");
-            return true;
-        }
-        catch (Exception ex)
-        {
-            throw new Error(ex.getMessage());
-        }
-    }
     public Usuario buscarUsuarioPorId(int pId)
     {
         try

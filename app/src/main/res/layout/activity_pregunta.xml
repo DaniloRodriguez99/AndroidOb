@@ -10,29 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/fondo_preguntas_pescado">
+        android:background="@drawable/preguntados_fondogato">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
             android:padding="0dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="220dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/modak"
-                android:text="Cuantos pares son tres botas?"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:textSize="22dp" />
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/preguntados_hojas"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:textAlignment="center">
+
+                <TextView
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="@font/modak"
+                    android:textAlignment="center"
+                    android:text="Preguntaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:textColor="#000"
+                    android:textSize="22dp"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_weight="2"
             android:layout_width="match_parent"
+            android:layout_marginTop="50dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -42,25 +54,25 @@
                 android:layout_marginHorizontal="60dp"
                 android:background="@drawable/respuestas"
                 android:elevation="10dp"
-                android:text="Uno y medio" />
+                android:text="Respuesta 1" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/respuesta_incorrecta"
+                android:background="@drawable/respuestas"
                 android:elevation="10dp"
-                android:text="Tres y medio" />
+                android:text="Respuesta 2" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="60dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/respuesta_correcta"
+                android:background="@drawable/respuestas"
                 android:elevation="10dp"
-                android:text="Dos y medio" />
+                android:text="Respuesta 3" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
