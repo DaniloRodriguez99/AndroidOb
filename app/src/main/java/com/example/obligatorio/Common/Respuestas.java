@@ -7,20 +7,20 @@ public class Respuestas implements Serializable {
     private int _id;
     private String _respuesta;
     private boolean _correcta; /* si es true, es correcta. si es false es incorrecta */
-    private Preguntas _pregunta;
+    private Pregunta _pregunta;
 
-    public Respuestas(int _id, String _respuesta, boolean _correcta, Preguntas _pregunta) {
+    public Respuestas(int _id, String _respuesta, boolean _correcta, Pregunta _pregunta) {
         this._id = _id;
         this._respuesta = _respuesta;
         this._correcta = _correcta;
         this._pregunta = _pregunta;
     }
 
-    public Preguntas get_pregunta() {
+    public Pregunta get_pregunta() {
         return _pregunta;
     }
 
-    public void set_pregunta(Preguntas _pregunta) {
+    public void set_pregunta(Pregunta _pregunta) {
         this._pregunta = _pregunta;
     }
 

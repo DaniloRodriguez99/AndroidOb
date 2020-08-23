@@ -1,0 +1,51 @@
+CREATE TABLE [usuario] (
+[id] INTEGER  NOT NULL PRIMARY KEY,
+[user] TEXT  UNIQUE NOT NULL,
+[pass] TEXT  NOT NULL,
+[email] TEXT  UNIQUE NOT NULL,
+[admin] BOOLEAN DEFAULT 0 Null CHECK (admin IN (0,1))
+)
+
+Insert into usuario(user,pass,email,admin) values('admin','admin','admin',1)
+
+CREATE TABLE [mascota] (
+[nombre] TEXT  NOT NULL,
+[iduser] INTEGER  NOT NULL,
+[idmascota] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+[ultvcomio] TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+[ultvtomo] TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+[tipo] TEXT  NOT NULL
+)
+CREATE TABLE Trivia (
+idtrivia INTEGER PRIMARY KEY,
+fechayhora TEXT NOT NULL,
+idusuario INTEGER NOT NULL
+)
+
+CREATE TABLE [pregunta] (
+[id] INTEGER  NOT NULL PRIMARY KEY,
+[pregunta] TEXT  NOT NULL,
+[tipo] TEXT NOT NULL check(tipo in('Perro','Gato','Pescado','Oso'))
+)
+
+
+////////////////////Todavia No Implementado/////////////////////////
+CREATE TABLE [Respuesta] (
+[idrespuesta] INTEGER  NOT NULL PRIMARY KEY,
+[idpregunta] INTEGER  NOT NULL,
+[correcta] BOOLEAN DEFAULT 0  NULL,
+[respuesta] VARCHAR(60)  NOT NULL
+)
+
+CREATE TABLE [Historial] (
+[idhistorial] INTEGER  NOT NULL PRIMARY KEY,
+[idtrivia] INTEGER  NOT NULL,
+[respuestaid] INTEGER  NOT NULL
+)
+
+CREATE TABLE [Publicidad] (
+[idpublicidad] INTEGER  NOT NULL PRIMARY KEY,
+[titulo] VARCHAR(30)  NOT NULL,
+[descripcion] VARCHAR(100)  NOT NULL,
+[imagen] INTEGER  NOT NULL
+)
