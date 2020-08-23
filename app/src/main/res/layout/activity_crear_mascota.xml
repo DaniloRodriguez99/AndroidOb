@@ -136,6 +136,7 @@
             android:paddingVertical="20dp">
 
             <EditText
+                android:id="@+id/etNombre_CrearMascota"
                 android:layout_width="261dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -150,6 +151,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabCrear_CrearMascota"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

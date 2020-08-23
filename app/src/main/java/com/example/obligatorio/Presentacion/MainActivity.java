@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String usuario = txtUsuario.getText().toString().trim();
                 String contra = txtContra.getText().toString().trim();
-                Controladora control = new Controladora(getBaseContext());
+                final Controladora control = new Controladora(getBaseContext());
                 Usuario unUsuario = new Usuario(usuario, contra);
                 unUsuario = control.Login(unUsuario);
                 if(unUsuario != null) {
@@ -92,8 +92,15 @@ public class MainActivity extends AppCompatActivity {
                             lytContent.setVisibility(View.VISIBLE);
                             lytCheck.startAnimation(fadeOut);
                             lytCheck.setVisibility(View.INVISIBLE);
-                            Intent i = new Intent(MainActivity.this, CrearMascota.class);
-                            startActivity(i);
+                            if(control.BuscarMasctoasDeUnUsuario().size() > 0) {
+                                Intent i = new Intent(MainActivity.this, Mascotas.class);
+                                startActivity(i);
+                            }
+                            else
+                            {
+                                Intent i = new Intent(MainActivity.this, CrearMascota.class);
+                                startActivity(i);
+                            }
                         }
                     }, 2500);
 
