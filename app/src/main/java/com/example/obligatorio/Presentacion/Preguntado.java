@@ -5,33 +5,46 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.obligatorio.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
 import java.util.Random;
 
 public class Preguntado extends AppCompatActivity implements Animation.AnimationListener {
 
-boolean blnButtonRotation = true;
-int intNumber = 4;
-int NumeroTipo;
-long lngDegrees = 0;
-FloatingActionButton btnGirar;
+    boolean blnButtonRotation = true;
+    int intNumber = 4;
+    int NumeroTipo;
+    long lngDegrees = 0;
+    private TextView lblEstado;
+    FloatingActionButton btnGirar;
 
-ImageView imageRoulette;
+    ImageView imageRoulette;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().addFlags(1024);
         requestWindowFeature(1);
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_preguntado);
 
+        lblEstado = (TextView)findViewById(R.id.lblVecesTrivia);
+
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        if(extras != null){
+            lblEstado.setText(extras.getString("keyEstado"));
+        }
         btnGirar = (FloatingActionButton)findViewById(R.id.btnGirar);
         imageRoulette = (ImageView)findViewById(R.id.imgRuleta);
     }

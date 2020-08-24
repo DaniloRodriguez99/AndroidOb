@@ -15,10 +15,10 @@ public class pPregunta extends pConexion{
                 this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "' ORDER BY RANDOM() LIMIT 1;");
             }
             if (id1 != 0 && id2 == 0) {
-                this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "', and id !=" + id1 + " ORDER BY RANDOM() LIMIT 1;");
+                this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "' and id !=" + id1 + " ORDER BY RANDOM() LIMIT 1;");
             }
             if (id1 != 0 && id2 != 0 && id3 == 0) {
-                this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "' and id !=" + id1 + " and id != " + id2 + "); ORDER BY RANDOM() LIMIT 1;");
+                this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "' and id !=" + id1 + " and id != " + id2 + " ORDER BY RANDOM() LIMIT 1;");
             }
             if (id1 != 0 && id2 != 0 && id3 != 0 && id4 == 0) {
                 this.seleccionarDatos("select id,pregunta,tipo from pregunta where tipo ='" + Categoria + "' and id !=" + id1 + " and id != " + id2 + " and id != " + id3 + " ORDER BY RANDOM() LIMIT 1;");

@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imgRuleta"
-                android:text="Puntuacion: 80 puntos"
+                android:text="Puntuacion: 0 puntos"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:fontFamily="@font/modak"
@@ -78,6 +78,7 @@
             <TextView
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/lblVecesTrivia"
                 android:layout_below="@id/lblPuntuacion_Trivia"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/nro_rondas"
