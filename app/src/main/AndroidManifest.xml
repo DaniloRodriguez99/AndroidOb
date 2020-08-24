@@ -15,17 +15,17 @@
         <activity android:name=".Presentacion.Administracion"></activity>
         <activity android:name=".Presentacion.Mascotas" />
         <activity android:name=".Presentacion.CrearMascota" />
-        <activity android:name=".Presentacion.Pregunta"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".Presentacion.Preguntado" />
+        <activity android:name=".Presentacion.Pregunta"></activity>
+        <activity android:name=".Presentacion.Preguntado" ></activity>
         <activity android:name=".Presentacion.Registro" />
         <activity android:name=".Presentacion.Load">
 
         </activity>
-        <activity android:name=".Presentacion.MainActivity" />
+        <activity android:name=".Presentacion.MainActivity"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -5,8 +5,11 @@ import android.content.Context;
 import com.example.obligatorio.Common.Mascota;
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Usuario;
+import com.example.obligatorio.Common.Pregunta;
 import com.example.obligatorio.Persistencia.pMascota;
 import com.example.obligatorio.Persistencia.pUsuario;
+import com.example.obligatorio.Persistencia.pPregunta;
+
 
 import java.util.ArrayList;
 
@@ -14,12 +17,14 @@ public class Controladora {
 
     private pUsuario usuarioPersistente;
     private pMascota mascotaPersistente;
+    private pPregunta preguntaPersistente;
     private Session miSession;
 
     public Controladora(Context contexto)
     {
         usuarioPersistente = new pUsuario(contexto);
         mascotaPersistente = new pMascota(contexto);
+        preguntaPersistente = new pPregunta(contexto);
         miSession = new Session(contexto);
     }
     public Controladora(){}
@@ -112,6 +117,11 @@ public class Controladora {
             }
         }
         return null;
+    }
+
+    public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4)
+    {
+        return preguntaPersistente.TraerPregunta(pCategoria,IdP1,IdP2,IdP3,IdP4);
     }
 
 }

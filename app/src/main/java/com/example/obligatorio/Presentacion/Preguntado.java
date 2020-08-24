@@ -55,6 +55,7 @@ ImageView imageRoulette;
         btnGirar.setVisibility(View.VISIBLE);
 
         Intent i = new Intent(this, Pregunta.class);
+        i.putExtra("keyCategoria",TipoPregunta(NumeroTipo));
         startActivity(i);
     }
 
