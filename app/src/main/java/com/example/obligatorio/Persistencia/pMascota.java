@@ -62,4 +62,27 @@ public class pMascota extends pConexion {
             throw ex;
         }
     }
+
+    public Mascota buscarMascotaEspecifica(int idmascota, Usuario pUsuario)
+    {
+        try {
+            Mascota unaMascota = new Mascota();
+            this.seleccionarDatos("select nombre, iduser, ultvcomio, ultvtomo, idmascota, tipo from mascota where iduser = " + pUsuario.get_id() + " and idmascota = '" + idmascota + "'");
+            while (!c.isAfterLast()) {
+                unaMascota.set_nombre(c.getString(0));
+                unaMascota.set_usuario(pUsuario);
+                unaMascota.set_ult_comida(c.getString(2));
+                unaMascota.set_ult_bebida(c.getString(3));
+                unaMascota.set_id(c.getInt(4));
+                unaMascota.set_tipo(c.getString(5));
+                c.moveToNext();
+            }
+            c.close();
+            return unaMascota;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
 }

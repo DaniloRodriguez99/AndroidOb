@@ -19,99 +19,86 @@ public class Controladora {
     private pMascota mascotaPersistente;
     private pPregunta preguntaPersistente;
     private Session miSession;
+    private Controladora control;
 
-    public Controladora(Context contexto)
-    {
+    public Controladora(Context contexto) {
         usuarioPersistente = new pUsuario(contexto);
         mascotaPersistente = new pMascota(contexto);
         preguntaPersistente = new pPregunta(contexto);
         miSession = new Session(contexto);
     }
-    public Controladora(){}
 
-    public static ArrayList<Usuario> Usuarios = new ArrayList<>();
-
-    public Usuario Login(Usuario pUser)
-    {
+    public Usuario Login(Usuario pUser) {
         Usuario unUsuario = usuarioPersistente.Login(pUser);
-        if(unUsuario != null)
-        {
+        if (unUsuario != null) {
             miSession.setIdUsuario(unUsuario.get_id());
             return unUsuario;
         }
         return null;
     }
 
-    public boolean AltaUsuario(Usuario pUser){
+    public boolean AltaUsuario(Usuario pUser) {
         return usuarioPersistente.AltaUsuario(pUser);
     }
 
 
-    public boolean altaMascota(String mascotaNombre, String tipo)
-    {
-        Mascota unaMascota = new Mascota(mascotaNombre,buscarUsuarioPorId(miSession.getIdUsuario()),tipo);
+    public boolean altaMascota(String mascotaNombre, String tipo) {
+        Mascota unaMascota = new Mascota(mascotaNombre, buscarUsuarioPorId(miSession.getIdUsuario()), tipo);
         return mascotaPersistente.altaMascota(unaMascota);
     }
 
-    public Usuario buscarUsuarioPorId(int pId)
-    {
-       return usuarioPersistente.buscarUsuarioPorId(pId);
+    public Usuario buscarUsuarioPorId(int pId) {
+        return usuarioPersistente.buscarUsuarioPorId(pId);
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario()
-    {
+    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario() {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(Usuario unUser)
-    {
+    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(Usuario unUser) {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(unUser.get_id()));
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(int pId)
-    {
+    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(int pId) {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(pId));
     }
 
-    public Mascota BuscarMascotaEspecifica(String nombre)
-    {
+    public Mascota BuscarMascotaEspecifica(String nombre) {
         return mascotaPersistente.buscarMascotaEspecifica(nombre, buscarUsuarioPorId(miSession.getIdUsuario()));
     }
+    public Mascota BuscarMascotaEspecifica(int idmascota) {
+        return mascotaPersistente.buscarMascotaEspecifica(idmascota, buscarUsuarioPorId(miSession.getIdUsuario()));
+    }
 
-    public Mascota anteriorMascota(){
+    public int NroMascotasDeUnUsuario() {
+        return BuscarMasctoasDeUnUsuario().size();
+    }
+
+    public Mascota anteriorMascota() {
         ArrayList<Mascota> misMascotas = new ArrayList<>();
         misMascotas = BuscarMasctoasDeUnUsuario();
 
-        for ( Mascota m : misMascotas) {
-            if (m.get_id() == miSession.getMascota())
-            {
-                if (misMascotas.indexOf(m) != 0)
-                {
-                    return misMascotas.get(misMascotas.indexOf(m) -1);
-                }
-                else
-                {
-                    return misMascotas.get(misMascotas.size() -1);
+        for (Mascota m : misMascotas) {
+            if (m.get_id() == miSession.getMascota()) {
+                if (misMascotas.indexOf(m) != 0) {
+                    return misMascotas.get(misMascotas.indexOf(m) - 1);
+                } else {
+                    return misMascotas.get(misMascotas.size() - 1);
                 }
             }
         }
         return null;
     }
 
-    public Mascota siguienteMascota()
-    {
+    public Mascota siguienteMascota() {
         ArrayList<Mascota> misMascotas = new ArrayList<>();
         misMascotas = BuscarMasctoasDeUnUsuario();
 
-        for ( Mascota m : misMascotas) {
-            if (m.get_id() == miSession.getMascota())
-            {
-                if (misMascotas.indexOf(m) + 1  == misMascotas.size())
-                {
+        for (Mascota m : misMascotas) {
+            if (m.get_id() == miSession.getMascota()) {
+                if (misMascotas.indexOf(m) + 1 == misMascotas.size()) {
                     return misMascotas.get(0);
-                }
-                else
-                {
+                } else {
                     return misMascotas.get(misMascotas.indexOf(m) + 1);
                 }
             }
@@ -119,9 +106,8 @@ public class Controladora {
         return null;
     }
 
-    public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4)
-    {
-        return preguntaPersistente.TraerPregunta(pCategoria,IdP1,IdP2,IdP3,IdP4);
+    public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4) {
+        return preguntaPersistente.TraerPregunta(pCategoria, IdP1, IdP2, IdP3, IdP4);
     }
 
 }
