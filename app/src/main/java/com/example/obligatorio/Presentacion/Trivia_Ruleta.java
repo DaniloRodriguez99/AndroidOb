@@ -13,20 +13,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.Random;
 
-public class Preguntado extends AppCompatActivity implements Animation.AnimationListener {
+public class Trivia_Ruleta extends AppCompatActivity implements Animation.AnimationListener {
 
     boolean blnButtonRotation = true;
     int intNumber = 4;
     int NumeroTipo;
     long lngDegrees = 0;
     private TextView lblEstado;
+    private TextView lblPuntuacion;
     FloatingActionButton btnGirar;
+
+    private Session session;
+
+    private Intent i;
+    private Bundle extras;
 
     ImageView imageRoulette;
     @Override
@@ -38,12 +45,15 @@ public class Preguntado extends AppCompatActivity implements Animation.Animation
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_preguntado);
 
+        session = new Session(getApplicationContext());
         lblEstado = (TextView)findViewById(R.id.lblVecesTrivia);
+        lblPuntuacion = (TextView)findViewById(R.id.lblPuntuacion_Trivia);
 
-        Bundle extras = getIntent().getExtras();
+        extras = getIntent().getExtras();
         assert extras != null;
         if(extras != null){
             lblEstado.setText(extras.getString("keyEstado"));
+            lblPuntuacion.setText("Puntuacion: " + session.getPuntuacion() + " puntos");
         }
         btnGirar = (FloatingActionButton)findViewById(R.id.btnGirar);
         imageRoulette = (ImageView)findViewById(R.id.imgRuleta);
@@ -62,12 +72,12 @@ public class Preguntado extends AppCompatActivity implements Animation.Animation
 
         this.blnButtonRotation = true;
         this.NumeroTipo = (int)(((double)this.intNumber) - Math.floor(((double)this.lngDegrees) / (360.0d / ((double)this.intNumber))));
-        Toast toast = Toast.makeText(this,TipoPregunta(NumeroTipo) ,Toast.LENGTH_SHORT);
+        /*Toast toast = Toast.makeText(this,TipoPregunta(NumeroTipo) ,Toast.LENGTH_SHORT);
         toast.setGravity(49,0,0);
-        toast.show();
+        toast.show();*/
         btnGirar.setVisibility(View.VISIBLE);
 
-        Intent i = new Intent(this, Pregunta.class);
+        i = new Intent(this, Trivia_Pregunta.class);
         i.putExtra("keyCategoria",TipoPregunta(NumeroTipo));
         startActivity(i);
     }
@@ -91,6 +101,11 @@ public class Preguntado extends AppCompatActivity implements Animation.Animation
             rotateAnimation.setAnimationListener(this);
             imageRoulette.setAnimation(rotateAnimation);
             imageRoulette.startAnimation(rotateAnimation);
+            if(extras != null && extras.getString("keyEstado").equals("5/5")){
+                lblEstado.setText("0/0");
+                lblPuntuacion.setText("Puntuacion: 0 puntos");
+                session.ComenzarTrivia(); //Reinicia los valores, para si juega otra inicie todo de 0
+            }
         }
     }
 

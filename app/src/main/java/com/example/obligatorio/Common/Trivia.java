@@ -3,14 +3,14 @@ package com.example.obligatorio.Common;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Preguntados implements Serializable {
+public class Trivia implements Serializable {
 
     private int _puntuacion;
     private Usuario _usuario;
     private Date _fecha;
 
 
-    public Preguntados(int puntuacion, Usuario usuario, Date fecha) {
+    public Trivia(int puntuacion, Usuario usuario, Date fecha) {
         _puntuacion = puntuacion;
         _usuario = usuario;
         _fecha = fecha;

@@ -2,19 +2,20 @@ package com.example.obligatorio.Common;
 
 import java.io.Serializable;
 
-public class Respuestas implements Serializable {
+public class Respuesta implements Serializable {
 
     private int _id;
     private String _respuesta;
     private boolean _correcta; /* si es true, es correcta. si es false es incorrecta */
     private Pregunta _pregunta;
 
-    public Respuestas(int _id, String _respuesta, boolean _correcta, Pregunta _pregunta) {
+    public Respuesta(int _id, String _respuesta, boolean _correcta, Pregunta _pregunta) {
         this._id = _id;
         this._respuesta = _respuesta;
         this._correcta = _correcta;
         this._pregunta = _pregunta;
     }
+    public Respuesta(){}
 
     public Pregunta get_pregunta() {
         return _pregunta;

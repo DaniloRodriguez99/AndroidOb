@@ -27,24 +27,68 @@ CREATE TABLE [pregunta] (
 [pregunta] TEXT  NOT NULL,
 [tipo] TEXT NOT NULL check(tipo in('Perro','Gato','Pescado','Oso'))
 )
+insert into pregunta(pregunta,tipo) values('¿Los peces respiran en?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Los osos se caracterizan por comer?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Que raza de perro se caracteriza por ser agresiva?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Los Gatos son descendientes de?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Los peces son seres?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Que hacen los osos para conservar sus energias por largo periodo de tiempo?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Los perros son descendientes de?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Los Gatos eran alavados por que cultura?','Gato');
+;
 
 
-////////////////////Todavia No Implementado/////////////////////////
-CREATE TABLE [Respuesta] (
+CREATE TABLE [respuesta] (
 [idrespuesta] INTEGER  NOT NULL PRIMARY KEY,
 [idpregunta] INTEGER  NOT NULL,
 [correcta] BOOLEAN DEFAULT 0  NULL,
 [respuesta] VARCHAR(60)  NOT NULL
 )
+insert into respuesta(idpregunta,correcta,respuesta) values(1,1,'Agua');
+insert into respuesta(idpregunta,respuesta) values(1,'Tierra');
+insert into respuesta(idpregunta,respuesta) values(1,'No Respiran');
 
-CREATE TABLE [Historial] (
-[idhistorial] INTEGER  NOT NULL PRIMARY KEY,
+
+insert into respuesta(idpregunta,respuesta) values(2,'Bamboo');
+insert into respuesta(idpregunta,correcta,respuesta) values(2,1,'Miel');
+insert into respuesta(idpregunta,respuesta) values(2,'Huevos');
+
+insert into respuesta(idpregunta,respuesta) values(3,'Golden Retriever');
+insert into respuesta(idpregunta,respuesta) values(3,'Boxer');
+insert into respuesta(idpregunta,correcta,respuesta) values(3,1,'Pitbull');
+
+insert into respuesta(idpregunta,respuesta) values(4,'Caninos');
+insert into respuesta(idpregunta,correcta,respuesta) values(4,1,'Felinos');
+insert into respuesta(idpregunta,respuesta) values(4,'Peces');
+
+
+insert into respuesta(idpregunta,respuesta) values(5,'Vertebrado');
+insert into respuesta(idpregunta,correcta,respuesta) values(5,1,'Invertebrado');
+insert into respuesta(idpregunta,respuesta) values(5,'Magico');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(6,1,'Invernar');
+insert into respuesta(idpregunta,respuesta) values(6,'Cazar');
+insert into respuesta(idpregunta,respuesta) values(6,'Nadar');
+
+insert into respuesta(idpregunta,respuesta) values(7,'Hienas');
+insert into respuesta(idpregunta,correcta,respuesta) values(7,1,'Lobos');
+insert into respuesta(idpregunta,respuesta) values(7,'Panteras');
+
+insert into respuesta(idpregunta,respuesta) values(8,'Judia');
+insert into respuesta(idpregunta,respuesta) values(8,'Azteca');
+insert into respuesta(idpregunta,correcta,respuesta) values(8,1,'Egipcia');
+
+
+CREATE TABLE [historial] (
+[id] INTEGER  NOT NULL PRIMARY KEY,
 [idtrivia] INTEGER  NOT NULL,
-[respuestaid] INTEGER  NOT NULL
+[idrespuesta] INTEGER  NOT NULL
 )
+insert into historial(id,idtrivia,idrespuesta)values(0,0,0)
 
-CREATE TABLE [Publicidad] (
-[idpublicidad] INTEGER  NOT NULL PRIMARY KEY,
+CREATE TABLE [publicidad] (
+[id] INTEGER  NOT NULL PRIMARY KEY,
 [titulo] VARCHAR(30)  NOT NULL,
 [descripcion] VARCHAR(100)  NOT NULL,
 [imagen] INTEGER  NOT NULL

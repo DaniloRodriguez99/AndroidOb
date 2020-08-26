@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <color name="colorPrimary">#F62B32</color>
     <color name="colorPrimaryDark">#574BBC</color>
     <color name="colorAccent">#000</color>
-    <color name="verde">#62E45D</color>
+    <color name="verde" android:id="@+id/verde">#62E45D</color>
     <color name="rojo">#F62B32</color>
     <color name="violeta">#574BBC</color>
     <color name="Blanco">#fff</color>

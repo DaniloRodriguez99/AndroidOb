@@ -3,10 +3,13 @@ package com.example.obligatorio.Dominio;
 import android.content.Context;
 
 import com.example.obligatorio.Common.Mascota;
+import com.example.obligatorio.Common.Respuesta;
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Usuario;
 import com.example.obligatorio.Common.Pregunta;
 import com.example.obligatorio.Persistencia.pMascota;
+import com.example.obligatorio.Persistencia.pRespuesta;
+import com.example.obligatorio.Persistencia.pTrivia;
 import com.example.obligatorio.Persistencia.pUsuario;
 import com.example.obligatorio.Persistencia.pPregunta;
 
@@ -18,6 +21,8 @@ public class Controladora {
     private pUsuario usuarioPersistente;
     private pMascota mascotaPersistente;
     private pPregunta preguntaPersistente;
+    private pRespuesta respuestaPersistente;
+    private pTrivia triviaPersistente;
     private Session miSession;
     private Controladora control;
 
@@ -25,8 +30,11 @@ public class Controladora {
         usuarioPersistente = new pUsuario(contexto);
         mascotaPersistente = new pMascota(contexto);
         preguntaPersistente = new pPregunta(contexto);
+        respuestaPersistente = new pRespuesta(contexto);
+        triviaPersistente = new pTrivia(contexto);
         miSession = new Session(contexto);
     }
+    public Controladora(){}
 
     public Usuario Login(Usuario pUser) {
         Usuario unUsuario = usuarioPersistente.Login(pUser);
@@ -108,6 +116,21 @@ public class Controladora {
 
     public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4) {
         return preguntaPersistente.TraerPregunta(pCategoria, IdP1, IdP2, IdP3, IdP4);
+    }
+
+    public Pregunta buscarPregunta(int pId)
+    {
+        return preguntaPersistente.BuscarPreguntaEspecifica(pId);
+    }
+
+    public ArrayList<Respuesta> traerRespuestas(Pregunta pPregunta)
+    {
+        return respuestaPersistente.TraerRespuesta(pPregunta);
+    }
+
+    public int TraerIdUltimaTrivia()
+    {
+        return triviaPersistente.ObtenerUltimoIdTrivia();
     }
 
 }

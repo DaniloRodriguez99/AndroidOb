@@ -59,7 +59,8 @@ public class Mascotas extends AppCompatActivity {
         btnTrivia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Mascotas.this, Preguntado.class);
+                Intent i = new Intent(Mascotas.this, Trivia_Ruleta.class);
+                session.ComenzarTrivia();
                 startActivity(i);
             }
         });
@@ -68,7 +69,7 @@ public class Mascotas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Controladora control = new Controladora(getApplicationContext());
-                Mascota unaMasscota = new Mascota();
+                Mascota unaMasscota;
                 unaMasscota = control.anteriorMascota();
                 if (unaMasscota != null) {
                     CargarMascota(unaMasscota.get_nombre());

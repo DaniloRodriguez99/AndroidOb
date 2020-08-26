@@ -41,4 +41,23 @@ public class pPregunta extends pConexion{
         }
         return null;
     }
+    public Pregunta BuscarPreguntaEspecifica(int pId)
+    {
+        Pregunta unaPregunta = new Pregunta();
+        try{
+            this.seleccionarDatos("select id,pregunta,tipo from pregunta where id = " + pId + ";");
+
+            while(!c.isAfterLast())
+            {
+                unaPregunta.set_id(c.getInt(0));
+                unaPregunta.set_pregunta(c.getString(1));
+                unaPregunta.set_tipo(c.getString(2));
+
+            }return unaPregunta;
+        }catch (Exception ex)
+        {
+            throw new Error(ex.getMessage());
+        }
+    }
+
 }
