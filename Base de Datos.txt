@@ -53,77 +53,93 @@ CREATE TABLE [respuesta] (
 [idrespuesta] INTEGER  NOT NULL PRIMARY KEY,
 [idpregunta] INTEGER  NOT NULL,
 [correcta] BOOLEAN DEFAULT 0  NULL,
-[respuesta] VARCHAR(60)  NOT NULL
+[respuesta] VARCHAR(60) UNIQUE NOT NULL
 )
 insert into respuesta(idpregunta,correcta,respuesta) values(1,1,'Agua');
 insert into respuesta(idpregunta,respuesta) values(1,'Tierra');
 insert into respuesta(idpregunta,respuesta) values(1,'No Respiran');
+insert into respuesta(idpregunta,respuesta) values(1,'No Responde');
 
 
 insert into respuesta(idpregunta,respuesta) values(2,'Bamboo');
 insert into respuesta(idpregunta,correcta,respuesta) values(2,1,'Miel');
 insert into respuesta(idpregunta,respuesta) values(2,'Huevos');
+insert into respuesta(idpregunta,respuesta) values(2,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(3,'Golden Retriever');
 insert into respuesta(idpregunta,respuesta) values(3,'Boxer');
 insert into respuesta(idpregunta,correcta,respuesta) values(3,1,'Pitbull');
+insert into respuesta(idpregunta,respuesta) values(3,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(4,'Caninos');
 insert into respuesta(idpregunta,correcta,respuesta) values(4,1,'Felinos');
 insert into respuesta(idpregunta,respuesta) values(4,'Peces');
+insert into respuesta(idpregunta,respuesta) values(4,'No Responde');
 
 
 insert into respuesta(idpregunta,respuesta) values(5,'Vertebrado');
 insert into respuesta(idpregunta,correcta,respuesta) values(5,1,'Invertebrado');
 insert into respuesta(idpregunta,respuesta) values(5,'Magico');
+insert into respuesta(idpregunta,respuesta) values(5,'No Responde');
 
 
 insert into respuesta(idpregunta,correcta,respuesta) values(6,1,'Invernar');
 insert into respuesta(idpregunta,respuesta) values(6,'Cazar');
 insert into respuesta(idpregunta,respuesta) values(6,'Nadar');
+insert into respuesta(idpregunta,respuesta) values(6,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(7,'Hienas');
 insert into respuesta(idpregunta,correcta,respuesta) values(7,1,'Lobos');
 insert into respuesta(idpregunta,respuesta) values(7,'Panteras');
+insert into respuesta(idpregunta,respuesta) values(7,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(8,'Judia');
 insert into respuesta(idpregunta,respuesta) values(8,'Azteca');
 insert into respuesta(idpregunta,correcta,respuesta) values(8,1,'Egipcia');
+insert into respuesta(idpregunta,respuesta) values(8,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(9,'Uruguay');
 insert into respuesta(idpregunta,correcta,respuesta) values(9,1,'China');
 insert into respuesta(idpregunta,respuesta) values(9,'Australia');
+insert into respuesta(idpregunta,respuesta) values(9,'No Responde');
 
 
 insert into respuesta(idpregunta,correcta,respuesta) values(10,1,'Pardo');
 insert into respuesta(idpregunta,respuesta) values(10,'Panda');
 insert into respuesta(idpregunta,respuesta) values(10,'Marron');
+insert into respuesta(idpregunta,respuesta) values(10,'No Responde');
 
 insert into respuesta(idpregunta,correcta,respuesta) values(11,1,'4');
 insert into respuesta(idpregunta,respuesta) values(11,'6');
 insert into respuesta(idpregunta,correcta,respuesta) values(11,1,'5');
+insert into respuesta(idpregunta,respuesta) values(11,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(12,'Pinky');
 insert into respuesta(idpregunta,respuesta) values(12,'Cerebro');
 insert into respuesta(idpregunta,correcta,respuesta) values(12,1,'Garfield');
+insert into respuesta(idpregunta,respuesta) values(12,'No Responde');
 
 
 insert into respuesta(idpregunta,correcta,respuesta) values(13,1,'Mediante las branquias absorben el oxigeno');
 insert into respuesta(idpregunta,respuesta) values(13,'Con dos fosas nasales filtran el oxigeno');
 insert into respuesta(idpregunta,respuesta) values(13,'Respiran H2O');
+insert into respuesta(idpregunta,respuesta) values(13,'No Responde');
 
 
 insert into respuesta(idpregunta,correcta,respuesta) values(14,1,'Oso Panda');
 insert into respuesta(idpregunta,respuesta) values(14,'Oso Grizzly');
 insert into respuesta(idpregunta,respuesta) values(14,'Oso Perezoso');
+insert into respuesta(idpregunta,respuesta) values(14,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(15,'Escubi Du');
 insert into respuesta(idpregunta,correcta,respuesta) values(15,1,'Scooby Doo');
 insert into respuesta(idpregunta,respuesta) values(15,'Scuby du');
+insert into respuesta(idpregunta,respuesta) values(15,'No Responde');
 
 insert into respuesta(idpregunta,respuesta) values(16,'Power Rangers');
 insert into respuesta(idpregunta,correcta,respuesta) values(16,1,'Brujas');
 insert into respuesta(idpregunta,respuesta) values(16,'Princesas');
+insert into respuesta(idpregunta,respuesta) values(16,'No Responde');
 
 
 CREATE TABLE [historial] (

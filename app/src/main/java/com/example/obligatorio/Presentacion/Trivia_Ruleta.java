@@ -28,6 +28,7 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
     long lngDegrees = 0;
     private TextView lblEstado;
     private TextView lblPuntuacion;
+    private FloatingActionButton btnvolverDesdeRuleta;
     FloatingActionButton btnGirar;
 
     private Session session;
@@ -56,6 +57,7 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
             lblPuntuacion.setText("Puntuacion: " + session.getPuntuacion() + " puntos");
         }
         btnGirar = (FloatingActionButton)findViewById(R.id.btnGirar);
+        btnvolverDesdeRuleta = (FloatingActionButton)findViewById(R.id.btnvolverDesdeRuleta);
         imageRoulette = (ImageView)findViewById(R.id.imgRuleta);
     }
 
@@ -102,12 +104,20 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
             imageRoulette.setAnimation(rotateAnimation);
             imageRoulette.startAnimation(rotateAnimation);
             if(extras != null && extras.getString("keyEstado").equals("5/5")){
-                lblEstado.setText("0/0");
+                lblEstado.setText("0/5");
                 lblPuntuacion.setText("Puntuacion: 0 puntos");
                 session.ComenzarTrivia(); //Reinicia los valores, para si juega otra inicie todo de 0
             }
         }
     }
+
+    public void onClickVolver(View v)
+    {
+        i = new Intent(this,Mascotas.class);
+        startActivity(i);
+    }
+
+
 
     public String TipoPregunta(int num)
     {

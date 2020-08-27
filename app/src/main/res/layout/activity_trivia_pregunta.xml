@@ -13,6 +13,25 @@
         android:orientation="vertical"
         android:background="@drawable/preguntados_fondogato">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTimmer"
+                android:textColor="#000"
+                android:text="60"
+                android:textAlignment="center"
+                android:background="@drawable/timmer"
+                android:gravity="center_vertical"
+                android:textSize="35dp"
+                android:fontFamily="@font/modak">
+
+            </TextView>
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,15 +43,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/preguntados_hojas"
+                android:background="@drawable/preguntadohojas"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:textAlignment="center">
 
                 <TextView
-                    android:layout_width="280dp"
+                    android:layout_width="290dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:id="@+id/txtPreguntaTrivia"
                     android:layout_marginTop="80dp"
                     android:fontFamily="@font/modak"
@@ -48,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="50dp"
             android:layout_height="wrap_content"
+
             android:orientation="vertical">
 
             <Button
@@ -76,6 +95,7 @@
                 android:layout_marginHorizontal="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/respuestas"
+                android:layout_marginBottom="10dp"
                 android:elevation="10dp"
                 android:text="Respuesta 3" />
         </LinearLayout>

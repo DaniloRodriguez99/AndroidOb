@@ -3,6 +3,7 @@ package com.example.obligatorio.Presentacion;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -28,10 +29,16 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private Session session;
 
     private TextView txtPregunta;
+    private TextView txtTimmer;
 
     private Button Respuesta1;
     private Button Respuesta2;
     private Button Respuesta3;
+    private Respuesta noResponde;
+
+    private CountDownTimer countDownTimer;
+    private View fondopreguntados;
+    private long tiempoRestante;
 
     private ArrayList<Respuesta> listaRespuestas;
 
@@ -40,12 +47,12 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private int idPregunta3;
     private int idPregunta4;
 
+    private String categoria;
     private Controladora controladora;
 
     private com.example.obligatorio.Common.Pregunta unaPregunta;
     private com.example.obligatorio.Common.Respuesta unaRespuesta;
 
-    private Trivia unaTrivia;
 
     Intent i;
 
@@ -54,47 +61,49 @@ public class Trivia_Pregunta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_trivia_pregunta);
-        txtPregunta = (TextView)findViewById(R.id.txtPreguntaTrivia);
-        View fondopreguntados = (View) findViewById(R.id.lytFondoPreguntados);
 
+        tiempoRestante  = 30000;
+        controladora = new Controladora(getBaseContext());
+        i = new Intent(this, Trivia_Ruleta.class);
         session = new Session(getApplicationContext());
+
+        txtPregunta = (TextView)findViewById(R.id.txtPreguntaTrivia);
+        txtTimmer = (TextView)findViewById(R.id.txtTimmer);
 
         Respuesta1 = (Button)findViewById(R.id.boton1);
         Respuesta2 = (Button)findViewById(R.id.boton2);
         Respuesta3 = (Button)findViewById(R.id.boton3);
 
+        fondopreguntados = (View) findViewById(R.id.lytFondoPreguntados);
 
-        //loadDatos();
 
-        controladora = new Controladora(getBaseContext());
-        i = new Intent(this, Trivia_Ruleta.class);
-        Bundle extras = getIntent().getExtras();
-        assert extras != null;
-        String categoria = extras.getString("keyCategoria");
+        countDownTimer = new CountDownTimer(tiempoRestante,1000) {
+            @Override
+            public void onTick(long l) {
+                tiempoRestante = l/1000;
+            txtTimmer.setText(tiempoRestante+"");
+            }
 
-        //Elige Fondo según Categoria
-        assert categoria != null;
-        switch(categoria)
-        {
-            case("Perro"):
-                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondoperro);
-                break;
-            case("Gato"):
-                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondogato);
-                break;
-            case("Oso"):
-                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondooso);
-                break;
-            case("Pescado"):
-                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondopescado);
-                break;
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onFinish() {
+                unaRespuesta = noResponde;//Setea la respuesta final como no respondida
+                SetearPuntuacion(tiempoRestante*1000);
+                AgregarAlHistorial();
+                AltaTriviayHistorial();
+                startActivity(i);
+            }
+        }.start();
 
-        }
 
-        //Según Contador Aplica Determinado llamado a la persistencia de la pregunta, aplica llamado a funcion guardar datos, mediante pase por cada contador se guardara un contador++
-        //y un id extra de pregunta que no ira. Al llegar al final se reinicia la instancia volviendo a poner todos los valores en 0.
+        this.fondoSegunCategoria();
+
+
+        //Según Estado de la Trivia Aplica Determinado llamado a la persistencia de la pregunta, aplica llamado a funciones que guardan datos en la session,
+        // mediante pase por cada estado se guardara un Estado de la Trivia
+        //y de un id extra de pregunta que no ira aplicado al llamado de traer pregunta en la persistencia. Al llegar al final se reinicia la instancia volviendo a poner todos los valores en 0 para asi.
+        //poder iniciar otra trivia.
         switch (session.getEstadoTrivia())
         {
             case(0):
@@ -166,16 +175,18 @@ public class Trivia_Pregunta extends AppCompatActivity {
                // Toast.makeText(this,"Última Pregunta!!",Toast.LENGTH_LONG).show();
                 break;
         }
+
         Respuesta1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                DarColorRespuesta();
+                DarColorRespuesta(1);
                 unaRespuesta = listaRespuestas.get(0);
-                SetearPuntuacion();
+                SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 startActivity(i);
+                countDownTimer.cancel();
             }
         });
 
@@ -183,12 +194,13 @@ public class Trivia_Pregunta extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                DarColorRespuesta();
+                DarColorRespuesta(2);
                 unaRespuesta = listaRespuestas.get(1);
-                SetearPuntuacion();
+                SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 startActivity(i);
+                countDownTimer.cancel();
             }
         });
 
@@ -196,12 +208,13 @@ public class Trivia_Pregunta extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                DarColorRespuesta();
+                DarColorRespuesta(3);
                 unaRespuesta = listaRespuestas.get(2);
-                SetearPuntuacion();
+                SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 startActivity(i);
+                countDownTimer.cancel();
             }
         });
 
@@ -220,6 +233,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
         Respuesta1.setText(listaRespuestas.get(0).get_respuesta());
         Respuesta2.setText(listaRespuestas.get(1).get_respuesta());
         Respuesta3.setText(listaRespuestas.get(2).get_respuesta());
+        noResponde = listaRespuestas.get(3);
     }
 
     public void SetearEstadoDeJugadas(int estadoSwitch)//Setea en la activity Preguntado el estado de preguntas respondidas.
@@ -234,11 +248,19 @@ public class Trivia_Pregunta extends AppCompatActivity {
         }
     }
 
-    public void SetearPuntuacion()
+    public void SetearPuntuacion(long estadoDelContador)
     {
-        if(unaRespuesta.is_correcta())
+        if(unaRespuesta.is_correcta() && estadoDelContador > 15000)
         {
             session.setPuntuacion(session.getPuntuacion() + 60);
+        }
+        if(unaRespuesta.is_correcta() && estadoDelContador < 15000 && estadoDelContador > 5000)
+        {
+            session.setPuntuacion(session.getPuntuacion() + 30);
+        }
+        if(unaRespuesta.is_correcta() && estadoDelContador < 5000)
+        {
+            session.setPuntuacion(session.getPuntuacion() + 15);
         }
     }
 
@@ -248,52 +270,40 @@ public class Trivia_Pregunta extends AppCompatActivity {
         session.setHistorial(unHistorial);
     }
 
-    public void DarColorRespuesta()
+    public void DarColorRespuesta(int botonPresionado)
     {
-        if(listaRespuestas.get(0).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-        }
-        if(listaRespuestas.get(1).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-        }
-        if(listaRespuestas.get(2).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-        }
-        if(listaRespuestas.get(0).is_correcta() && listaRespuestas.get(1).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-        }
-        if(listaRespuestas.get(1).is_correcta() && listaRespuestas.get(2).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-        }
-        if(listaRespuestas.get(0).is_correcta() && listaRespuestas.get(2).is_correcta())
-        {
-            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
-            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
-            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+        switch(botonPresionado) {
+            case 1:
+            if (listaRespuestas.get(0).is_correcta()) {
+                Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            } else {
+                Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+            }
+            break;
+            case 2:
+                if (listaRespuestas.get(1).is_correcta()) {
+                    Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+                } else {
+                    Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+                }
+                break;
+            case 3:
+            if (listaRespuestas.get(2).is_correcta()) {
+                Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            } else {
+                Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+            }
+            break;
+
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void AltaTriviayHistorial()
     {
-        if(idPregunta1 != 0 && idPregunta2 != 0 && idPregunta3 != 0 && idPregunta4 != 0)
+        if(idPregunta1 != 0 && idPregunta2 != 0 && idPregunta3 != 0 && idPregunta4 != 0)//Controla estemos en la ultima instancia, ya que se setiaron previamente jugando el juego estos id.
         {
-            unaTrivia = new Trivia();
+            Trivia unaTrivia = new Trivia();
             unaTrivia.set_puntuacion(session.getPuntuacion());
             unaTrivia.set_usuario(controladora.buscarUsuarioPorId(session.getIdUsuario()));
             unaTrivia.set_fecha(LocalDateTime.now());
@@ -306,6 +316,30 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 h.set_Trivia(unaTrivia);
                 controladora.altaHistorial(h);
             }
+        }
+    }
+
+    public void fondoSegunCategoria()
+    {
+        //Carga la categoria desde Trivia_Ruleta
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        categoria = extras.getString("keyCategoria");
+        switch(categoria)
+        {
+            case("Perro"):
+                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondoperro);
+                break;
+            case("Gato"):
+                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondogato);
+                break;
+            case("Oso"):
+                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondooso);
+                break;
+            case("Pescado"):
+                fondopreguntados.setBackgroundResource(R.drawable.preguntados_fondopescado);
+                break;
+
         }
     }
 }

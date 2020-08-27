@@ -15,7 +15,7 @@
         <activity android:name=".Presentacion.Administracion"></activity>
         <activity android:name=".Presentacion.Mascotas" />
         <activity android:name=".Presentacion.CrearMascota" />
-        <activity android:name=".Presentacion.Trivia_Pregunta"></activity>
+        <activity android:name=".Presentacion.Trivia_Pregunta"/>
         <activity android:name=".Presentacion.Trivia_Ruleta" ></activity>
         <activity android:name=".Presentacion.Registro" />
         <activity android:name=".Presentacion.Load">

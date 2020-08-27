@@ -17,7 +17,7 @@ public class pRespuesta extends pConexion{
         ArrayList<Respuesta> ListaRespuestas = new ArrayList<>();
         try
         {
-            seleccionarDatos("select id,idpregunta,correcta,respuesta from respuesta where idpregunta =" + pPregunta.get_id() + ";");
+            seleccionarDatos("select id,idpregunta,correcta,respuesta from respuesta where idpregunta =" + pPregunta.get_id() + " limit 4;");
 
             while(!c.isAfterLast())
             {
@@ -41,5 +41,6 @@ public class pRespuesta extends pConexion{
             throw new Error(ex.getMessage());
         }
     }
+
 }
 
