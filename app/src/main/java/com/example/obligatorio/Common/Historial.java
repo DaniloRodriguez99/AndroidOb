@@ -5,8 +5,22 @@ import java.io.Serializable;
 public class Historial implements Serializable {
 
     private int _id;
-    private int _idTrivia;
-    private int _idRespuesta;
+    private Trivia _trivia;
+    private Respuesta _respuesta;
+
+    public Historial(int pId,Trivia pTrivia, Respuesta pRespuesta)
+    {
+        this._id = pId;
+        this._trivia = pTrivia;
+        this._respuesta = pRespuesta;
+    }
+
+    public Historial(Respuesta pRespuesta)
+    {
+        this._respuesta = pRespuesta;
+    }
+
+    public Historial(){}
 
     public int get_id() {
         return _id;
@@ -16,19 +30,19 @@ public class Historial implements Serializable {
         this._id = _id;
     }
 
-    public int get_idTrivia() {
-        return _idTrivia;
+    public Trivia get_Trivia() {
+        return _trivia;
     }
 
-    public void set_idTrivia(int _idTrivia) {
-        this._idTrivia = _idTrivia;
+    public void set_Trivia(Trivia _trivia) {
+        this._trivia = _trivia;
     }
 
-    public int get_idRespuesta() {
-        return _idRespuesta;
+    public Respuesta get_Respuesta() {
+        return _respuesta;
     }
 
-    public void set_idRespuesta(int _idRespuesta) {
-        this._idRespuesta = _idRespuesta;
+    public void set_Respuesta(Respuesta _respuesta) {
+        this._respuesta = _respuesta;
     }
 }

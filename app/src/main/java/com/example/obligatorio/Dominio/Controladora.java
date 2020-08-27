@@ -2,11 +2,14 @@ package com.example.obligatorio.Dominio;
 
 import android.content.Context;
 
+import com.example.obligatorio.Common.Historial;
 import com.example.obligatorio.Common.Mascota;
 import com.example.obligatorio.Common.Respuesta;
 import com.example.obligatorio.Common.Session;
+import com.example.obligatorio.Common.Trivia;
 import com.example.obligatorio.Common.Usuario;
 import com.example.obligatorio.Common.Pregunta;
+import com.example.obligatorio.Persistencia.pHistorial;
 import com.example.obligatorio.Persistencia.pMascota;
 import com.example.obligatorio.Persistencia.pRespuesta;
 import com.example.obligatorio.Persistencia.pTrivia;
@@ -23,8 +26,8 @@ public class Controladora {
     private pPregunta preguntaPersistente;
     private pRespuesta respuestaPersistente;
     private pTrivia triviaPersistente;
+    private pHistorial historialPersistente;
     private Session miSession;
-    private Controladora control;
 
     public Controladora(Context contexto) {
         usuarioPersistente = new pUsuario(contexto);
@@ -32,6 +35,7 @@ public class Controladora {
         preguntaPersistente = new pPregunta(contexto);
         respuestaPersistente = new pRespuesta(contexto);
         triviaPersistente = new pTrivia(contexto);
+        historialPersistente = new pHistorial(contexto);
         miSession = new Session(contexto);
     }
     public Controladora(){}
@@ -54,6 +58,10 @@ public class Controladora {
         Mascota unaMascota = new Mascota(mascotaNombre, buscarUsuarioPorId(miSession.getIdUsuario()), tipo);
         return mascotaPersistente.altaMascota(unaMascota);
     }
+
+    public boolean altaHistorial(Historial pHistorial){return historialPersistente.altaHistorial(pHistorial);}
+
+    public boolean altaTrivia(Trivia pTrivia){return triviaPersistente.AltaTrivia(pTrivia);}
 
     public Usuario buscarUsuarioPorId(int pId) {
         return usuarioPersistente.buscarUsuarioPorId(pId);

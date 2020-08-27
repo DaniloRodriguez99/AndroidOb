@@ -5,8 +5,10 @@ CREATE TABLE [usuario] (
 [email] TEXT  UNIQUE NOT NULL,
 [admin] BOOLEAN DEFAULT 0 Null CHECK (admin IN (0,1))
 )
-
-Insert into usuario(user,pass,email,admin) values('admin','admin','admin',1)
+Insert into usuario(user,pass,email) values('user','user','user');
+Insert into usuario(user,pass,email,admin) values('admin','admin','admin',1);
+insert into usuario(user,pass,email) values('u','u','u');
+insert into usuario(user,pass,email,admin) values('a','a','a',1);
 
 CREATE TABLE [mascota] (
 [nombre] TEXT  NOT NULL,
@@ -18,6 +20,7 @@ CREATE TABLE [mascota] (
 )
 CREATE TABLE Trivia (
 idtrivia INTEGER PRIMARY KEY,
+puntuacion INTEGER NOT NULL,
 fechayhora TEXT NOT NULL,
 idusuario INTEGER NOT NULL
 )
@@ -31,10 +34,18 @@ insert into pregunta(pregunta,tipo) values('¿Los peces respiran en?','Pescado')
 insert into pregunta(pregunta,tipo) values('¿Los osos se caracterizan por comer?','Oso')
 insert into pregunta(pregunta,tipo) values('¿Que raza de perro se caracteriza por ser agresiva?','Perro');
 insert into pregunta(pregunta,tipo) values('¿Los Gatos son descendientes de?','Gato');
-insert into pregunta(pregunta,tipo) values('¿Los peces son seres?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Los pulpos son seres?','Pescado');
 insert into pregunta(pregunta,tipo) values('¿Que hacen los osos para conservar sus energias por largo periodo de tiempo?','Oso')
 insert into pregunta(pregunta,tipo) values('¿Los perros son descendientes de?','Perro');
 insert into pregunta(pregunta,tipo) values('¿Los Gatos eran alavados por que cultura?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Cual es el pais caracteristico por la venta y explotacion de la fauna acuatica?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Cuál de estos no es un tipo de oso?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Cuantas pesunias poseen los perros?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Como se llama el famoso gato naranja de caricaturas?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Como respiran los peces?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Que oso se caracteriza por comer bambu?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Como se llama el perro que come galletas y atrapa moustruos?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Los gatos se caracterizan por ser la mascota de?','Gato');
 ;
 
 
@@ -78,6 +89,41 @@ insert into respuesta(idpregunta,respuesta) values(7,'Panteras');
 insert into respuesta(idpregunta,respuesta) values(8,'Judia');
 insert into respuesta(idpregunta,respuesta) values(8,'Azteca');
 insert into respuesta(idpregunta,correcta,respuesta) values(8,1,'Egipcia');
+
+insert into respuesta(idpregunta,respuesta) values(9,'Uruguay');
+insert into respuesta(idpregunta,correcta,respuesta) values(9,1,'China');
+insert into respuesta(idpregunta,respuesta) values(9,'Australia');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(10,1,'Pardo');
+insert into respuesta(idpregunta,respuesta) values(10,'Panda');
+insert into respuesta(idpregunta,respuesta) values(10,'Marron');
+
+insert into respuesta(idpregunta,correcta,respuesta) values(11,1,'4');
+insert into respuesta(idpregunta,respuesta) values(11,'6');
+insert into respuesta(idpregunta,correcta,respuesta) values(11,1,'5');
+
+insert into respuesta(idpregunta,respuesta) values(12,'Pinky');
+insert into respuesta(idpregunta,respuesta) values(12,'Cerebro');
+insert into respuesta(idpregunta,correcta,respuesta) values(12,1,'Garfield');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(13,1,'Mediante las branquias absorben el oxigeno');
+insert into respuesta(idpregunta,respuesta) values(13,'Con dos fosas nasales filtran el oxigeno');
+insert into respuesta(idpregunta,respuesta) values(13,'Respiran H2O');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(14,1,'Oso Panda');
+insert into respuesta(idpregunta,respuesta) values(14,'Oso Grizzly');
+insert into respuesta(idpregunta,respuesta) values(14,'Oso Perezoso');
+
+insert into respuesta(idpregunta,respuesta) values(15,'Escubi Du');
+insert into respuesta(idpregunta,correcta,respuesta) values(15,1,'Scooby Doo');
+insert into respuesta(idpregunta,respuesta) values(15,'Scuby du');
+
+insert into respuesta(idpregunta,respuesta) values(16,'Power Rangers');
+insert into respuesta(idpregunta,correcta,respuesta) values(16,1,'Brujas');
+insert into respuesta(idpregunta,respuesta) values(16,'Princesas');
 
 
 CREATE TABLE [historial] (

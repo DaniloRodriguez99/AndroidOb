@@ -1,6 +1,7 @@
 package com.example.obligatorio.Presentacion;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -8,15 +9,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.obligatorio.Common.Historial;
 import com.example.obligatorio.Common.Session;
+import com.example.obligatorio.Common.Trivia;
 import com.example.obligatorio.Dominio.Controladora;
 import com.example.obligatorio.Common.Respuesta;
 import com.example.obligatorio.R;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Trivia_Pregunta extends AppCompatActivity {
 
@@ -30,10 +35,17 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
     private ArrayList<Respuesta> listaRespuestas;
 
+    private int idPregunta1;
+    private int idPregunta2;
+    private int idPregunta3;
+    private int idPregunta4;
+
     private Controladora controladora;
 
     private com.example.obligatorio.Common.Pregunta unaPregunta;
     private com.example.obligatorio.Common.Respuesta unaRespuesta;
+
+    private Trivia unaTrivia;
 
     Intent i;
 
@@ -52,6 +64,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
         Respuesta1 = (Button)findViewById(R.id.boton1);
         Respuesta2 = (Button)findViewById(R.id.boton2);
         Respuesta3 = (Button)findViewById(R.id.boton3);
+
+
         //loadDatos();
 
         controladora = new Controladora(getBaseContext());
@@ -84,9 +98,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
         switch (session.getEstadoTrivia())
         {
             case(0):
-                int idPregunta1 = session.getIdPregunta(1);//Retorna 0 de default, y todas las otras session.getIdPregunta tambien retornan 0
+                idPregunta1 = session.getIdPregunta(1);//Retorna 0 de default, y todas las otras session.getIdPregunta tambien retornan 0
                 unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,session.getIdPregunta(2),session.getIdPregunta(3),session.getIdPregunta(4));
-                session.setIdTrivia(controladora.TraerIdUltimaTrivia());
 
                 SetearPregunta();
                 TraerRespuestas();
@@ -99,8 +112,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 break;
             case(1):
                 idPregunta1 = session.getIdPregunta(1);//Retorna el id de la Pregunta anterior
-                int idPregunta2 = session.getIdPregunta(2);//Retorna 0 de default
-                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,session.getIdPregunta(3),session.getIdPregunta(4));
+                idPregunta2 = session.getIdPregunta(2);//Retorna 0 de default
+                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,session.getIdPregunta(3),session.getIdPregunta(4));//Trae Pregunta con 1 no repetida
 
                 SetearPregunta();
                 TraerRespuestas();
@@ -113,8 +126,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
             case(2):
                 idPregunta1 = session.getIdPregunta(1);//Retorna el id de la Pregunta anterior
                 idPregunta2 = session.getIdPregunta(2);//Retorna el id de la Pregunta anterior
-                int idPregunta3 = session.getIdPregunta(3);//Retorna 0 de default
-                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,session.getIdPregunta(4));
+                idPregunta3 = session.getIdPregunta(3);//Retorna 0 de default
+                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,session.getIdPregunta(4));//Trae Pregunta con 2 no repetidas
 
                 SetearPregunta();
                 TraerRespuestas();
@@ -128,8 +141,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 idPregunta1 = session.getIdPregunta(1);//Retorna el id de la Pregunta anterior
                 idPregunta2 = session.getIdPregunta(2);//Retorna el id de la Pregunta anterior
                 idPregunta3 = session.getIdPregunta(3);//Retorna el id de la Pregunta anterior
-                int idPregunta4 = session.getIdPregunta(4);//Retorna 0 de default
-                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,idPregunta4);
+                idPregunta4 = session.getIdPregunta(4);//Retorna 0 de default
+                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,idPregunta4);//Trae Pregunta con 3 no repetidas
 
                 SetearPregunta();
                 TraerRespuestas();
@@ -145,7 +158,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 idPregunta3 = session.getIdPregunta(3);//Retorna el id de la Pregunta anterior
                 idPregunta4 = session.getIdPregunta(4);//Retorna el id de la Pregunta anterior
 
-                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,idPregunta4);
+                unaPregunta = controladora.traerPreguntasTrivia(categoria,idPregunta1,idPregunta2,idPregunta3,idPregunta4);//Trae Pregunta con 4 no repetidas
 
                 SetearPregunta();
                 TraerRespuestas();
@@ -154,34 +167,40 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 break;
         }
         Respuesta1.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 DarColorRespuesta();
                 unaRespuesta = listaRespuestas.get(0);
                 SetearPuntuacion();
                 AgregarAlHistorial();
+                AltaTriviayHistorial();
                 startActivity(i);
             }
         });
 
         Respuesta2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 DarColorRespuesta();
                 unaRespuesta = listaRespuestas.get(1);
                 SetearPuntuacion();
                 AgregarAlHistorial();
+                AltaTriviayHistorial();
                 startActivity(i);
             }
         });
 
         Respuesta3.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 DarColorRespuesta();
                 unaRespuesta = listaRespuestas.get(2);
                 SetearPuntuacion();
                 AgregarAlHistorial();
+                AltaTriviayHistorial();
                 startActivity(i);
             }
         });
@@ -225,9 +244,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
     public void AgregarAlHistorial()
     {
-        Historial unHistorial = new Historial();
-        unHistorial.set_idRespuesta(unaRespuesta.get_id());
-        unHistorial.set_idTrivia(session.getIdTrivia());
+        Historial unHistorial = new Historial(unaRespuesta);
         session.setHistorial(unHistorial);
     }
 
@@ -250,6 +267,45 @@ public class Trivia_Pregunta extends AppCompatActivity {
             Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
             Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
             Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+        }
+        if(listaRespuestas.get(0).is_correcta() && listaRespuestas.get(1).is_correcta())
+        {
+            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+        }
+        if(listaRespuestas.get(1).is_correcta() && listaRespuestas.get(2).is_correcta())
+        {
+            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+        }
+        if(listaRespuestas.get(0).is_correcta() && listaRespuestas.get(2).is_correcta())
+        {
+            Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+            Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+            Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void AltaTriviayHistorial()
+    {
+        if(idPregunta1 != 0 && idPregunta2 != 0 && idPregunta3 != 0 && idPregunta4 != 0)
+        {
+            unaTrivia = new Trivia();
+            unaTrivia.set_puntuacion(session.getPuntuacion());
+            unaTrivia.set_usuario(controladora.buscarUsuarioPorId(session.getIdUsuario()));
+            unaTrivia.set_fecha(LocalDateTime.now());
+
+            controladora.altaTrivia(unaTrivia);
+            List<Historial> lista = session.getHistorial();
+            for(Historial h:lista)
+            {
+                unaTrivia.set_id(controladora.TraerIdUltimaTrivia());
+                h.set_Trivia(unaTrivia);
+                controladora.altaHistorial(h);
+            }
         }
     }
 }

@@ -1,20 +1,29 @@
 package com.example.obligatorio.Common;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Trivia implements Serializable {
 
+    private int _id;
     private int _puntuacion;
     private Usuario _usuario;
-    private Date _fecha;
+    private LocalDateTime _fecha;
 
 
-    public Trivia(int puntuacion, Usuario usuario, Date fecha) {
-        _puntuacion = puntuacion;
-        _usuario = usuario;
-        _fecha = fecha;
+    public Trivia(int pId, int pPuntuacion, Usuario pUsuario, LocalDateTime pFecha) {
+        _id = pId;
+        _puntuacion = pPuntuacion;
+        _usuario = pUsuario;
+        _fecha = pFecha;
     }
+
+    public Trivia(){}
+
+    public int get_id(){ return _id; }
+
+    public void set_id(int _id){this._id = _id; }
 
     public int get_puntuacion() {
         return _puntuacion;
@@ -32,11 +41,11 @@ public class Trivia implements Serializable {
         this._usuario = _usuario;
     }
 
-    public Date get_fecha() {
+    public LocalDateTime get_fecha() {
         return _fecha;
     }
 
-    public void set_fecha(Date _fecha) {
+    public void set_fecha(LocalDateTime _fecha) {
         this._fecha = _fecha;
     }
 }
