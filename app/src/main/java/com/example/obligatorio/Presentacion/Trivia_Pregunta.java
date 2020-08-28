@@ -1,6 +1,8 @@
 package com.example.obligatorio.Presentacion;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,7 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,10 +38,15 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private Respuesta noResponde;
 
     private CountDownTimer countDownTimer;
+    private CountDownTimer count;
+
     private View fondopreguntados;
     private long tiempoRestante;
 
     private ArrayList<Respuesta> listaRespuestas;
+
+
+    private MediaPlayer player;
 
     private int idPregunta1;
     private int idPregunta2;
@@ -54,6 +60,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private com.example.obligatorio.Common.Respuesta unaRespuesta;
 
 
+
     Intent i;
 
     @Override
@@ -62,8 +69,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_trivia_pregunta);
-
-        tiempoRestante  = 30000;
+        play();
+        tiempoRestante  = 60000;
         controladora = new Controladora(getBaseContext());
         i = new Intent(this, Trivia_Ruleta.class);
         session = new Session(getApplicationContext());
@@ -74,7 +81,6 @@ public class Trivia_Pregunta extends AppCompatActivity {
         Respuesta1 = (Button)findViewById(R.id.boton1);
         Respuesta2 = (Button)findViewById(R.id.boton2);
         Respuesta3 = (Button)findViewById(R.id.boton3);
-
         fondopreguntados = (View) findViewById(R.id.lytFondoPreguntados);
 
 
@@ -92,7 +98,17 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
-                startActivity(i);
+                count = new CountDownTimer(2000,1000) {//Finaliza esta Activity Luego de 2 Segs
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
             }
         }.start();
 
@@ -185,8 +201,20 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
-                startActivity(i);
                 countDownTimer.cancel();
+
+                count = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
+
             }
         });
 
@@ -199,8 +227,18 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
-                startActivity(i);
                 countDownTimer.cancel();
+                count = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
             }
         });
 
@@ -213,8 +251,18 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
-                startActivity(i);
                 countDownTimer.cancel();
+                count = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
             }
         });
 
@@ -240,27 +288,39 @@ public class Trivia_Pregunta extends AppCompatActivity {
     {
         switch(estadoSwitch)
         {
-            case 0:i.putExtra("keyEstado","1/5");break;
-            case 1:i.putExtra("keyEstado","2/5");break;
-            case 2:i.putExtra("keyEstado","3/5");break;
-            case 3:i.putExtra("keyEstado","4/5");break;
-            case 4:i.putExtra("keyEstado","5/5");break;
+            case 0:i.putExtra("keyEstado","1/5"); setResult(Activity.RESULT_OK, i); break;
+            case 1:i.putExtra("keyEstado","2/5"); setResult(Activity.RESULT_OK, i); break;
+            case 2:i.putExtra("keyEstado","3/5"); setResult(Activity.RESULT_OK, i); break;
+            case 3:i.putExtra("keyEstado","4/5"); setResult(Activity.RESULT_OK, i); break;
+            case 4:i.putExtra("keyEstado","5/5"); setResult(Activity.RESULT_OK, i); break;
         }
     }
 
     public void SetearPuntuacion(long estadoDelContador)
     {
-        if(unaRespuesta.is_correcta() && estadoDelContador > 15000)
+        if(unaRespuesta.is_correcta() && estadoDelContador > 50000)
         {
             session.setPuntuacion(session.getPuntuacion() + 60);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 15000 && estadoDelContador > 5000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 50000 && estadoDelContador > 40000)
+        {
+            session.setPuntuacion(session.getPuntuacion() + 40);
+        }
+        if(unaRespuesta.is_correcta() && estadoDelContador < 40000 && estadoDelContador > 30000)
         {
             session.setPuntuacion(session.getPuntuacion() + 30);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 5000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 30000 && estadoDelContador > 20000)
+        {
+            session.setPuntuacion(session.getPuntuacion() + 20);
+        }
+        if(unaRespuesta.is_correcta() && estadoDelContador < 20000 && estadoDelContador > 10000)
         {
             session.setPuntuacion(session.getPuntuacion() + 15);
+        }
+        if(unaRespuesta.is_correcta() && estadoDelContador < 10000 && estadoDelContador > 1000)
+        {
+            session.setPuntuacion(session.getPuntuacion() + 10);
         }
     }
 
@@ -275,22 +335,35 @@ public class Trivia_Pregunta extends AppCompatActivity {
         switch(botonPresionado) {
             case 1:
             if (listaRespuestas.get(0).is_correcta()) {
+                stop();
+                Correcta();
                 Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+
             } else {
+                stop();
+                Incorrecta();
                 Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
             }
             break;
             case 2:
                 if (listaRespuestas.get(1).is_correcta()) {
+                    stop();
+                    Correcta();
                     Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
                 } else {
+                    stop();
+                    Incorrecta();
                     Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
                 }
                 break;
             case 3:
             if (listaRespuestas.get(2).is_correcta()) {
+                stop();
+                Correcta();
                 Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
             } else {
+                stop();
+                Incorrecta();
                 Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
             }
             break;
@@ -341,6 +414,78 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 break;
 
         }
+    }
+
+    public void play()
+    {
+        if(player == null)
+        {
+            player = MediaPlayer.create(this, R.raw.fondotimer);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    public void Correcta()
+    {
+        if(player == null)
+        {
+            player = MediaPlayer.create(this, R.raw.correct_answer);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+    public void Incorrecta()
+    {
+        if(player == null)
+        {
+            player = MediaPlayer.create(this, R.raw.wrong_answer);
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    public void pause()
+    {
+        if(player != null)
+        {
+            player.pause();
+        }
+    }
+
+    public void stop()
+    {
+        stopPlayer();
+    }
+
+    public void stopPlayer()
+    {
+        if(player != null)
+        {
+            player.release();
+            player = null;
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopPlayer();
     }
 }
 

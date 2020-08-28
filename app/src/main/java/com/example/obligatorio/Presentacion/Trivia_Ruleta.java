@@ -1,8 +1,11 @@
 package com.example.obligatorio.Presentacion;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -34,6 +37,7 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
     private Session session;
 
     private Intent i;
+    private Intent Data = null;
     private Bundle extras;
 
     ImageView imageRoulette;
@@ -50,15 +54,18 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
         lblEstado = (TextView)findViewById(R.id.lblVecesTrivia);
         lblPuntuacion = (TextView)findViewById(R.id.lblPuntuacion_Trivia);
 
-        extras = getIntent().getExtras();
-        assert extras != null;
-        if(extras != null){
-            lblEstado.setText(extras.getString("keyEstado"));
-            lblPuntuacion.setText("Puntuacion: " + session.getPuntuacion() + " puntos");
-        }
+
         btnGirar = (FloatingActionButton)findViewById(R.id.btnGirar);
         btnvolverDesdeRuleta = (FloatingActionButton)findViewById(R.id.btnvolverDesdeRuleta);
         imageRoulette = (ImageView)findViewById(R.id.imgRuleta);
+
+        btnvolverDesdeRuleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i = new Intent(Trivia_Ruleta.this,Mascotas.class);
+                startActivity(i);
+            }
+        });
     }
 
     //Al iniciarse la animacion se setea el boolean auxiliar en falso.
@@ -67,6 +74,7 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
         this.blnButtonRotation = false;
         btnGirar.setVisibility(View.VISIBLE);
     }
+
 
     //Se Calcula el valor obtenido, y se setea del boolean auxiliar en true
     @Override
@@ -81,7 +89,21 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
 
         i = new Intent(this, Trivia_Pregunta.class);
         i.putExtra("keyCategoria",TipoPregunta(NumeroTipo));
-        startActivity(i);
+        startActivityForResult(i,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {//Al matar a la Activity Trivia_Pregunta se ejecuta esta funcion que trae datos de la anterior.
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                lblEstado.setText(data.getStringExtra("keyEstado"));
+                lblPuntuacion.setText("Puntuacion: " + session.getPuntuacion() + " puntos");
+                Data = data;
+            }
+        }
     }
 
     @Override
@@ -103,21 +125,14 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
             rotateAnimation.setAnimationListener(this);
             imageRoulette.setAnimation(rotateAnimation);
             imageRoulette.startAnimation(rotateAnimation);
-            if(extras != null && extras.getString("keyEstado").equals("5/5")){
+
+            if(Data != null && Data.getStringExtra("keyEstado").equals("5/5")){
                 lblEstado.setText("0/5");
                 lblPuntuacion.setText("Puntuacion: 0 puntos");
                 session.ComenzarTrivia(); //Reinicia los valores, para si juega otra inicie todo de 0
             }
         }
     }
-
-    public void onClickVolver(View v)
-    {
-        i = new Intent(this,Mascotas.class);
-        startActivity(i);
-    }
-
-
 
     public String TipoPregunta(int num)
     {

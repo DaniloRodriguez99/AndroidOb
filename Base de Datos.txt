@@ -83,7 +83,7 @@ insert into respuesta(idpregunta,respuesta) values(5,'Magico');
 insert into respuesta(idpregunta,respuesta) values(5,'No Responde');
 
 
-insert into respuesta(idpregunta,correcta,respuesta) values(6,1,'Invernar');
+insert into respuesta(idpregunta,correcta,respuesta) values(6,1,'Hibernar');
 insert into respuesta(idpregunta,respuesta) values(6,'Cazar');
 insert into respuesta(idpregunta,respuesta) values(6,'Nadar');
 insert into respuesta(idpregunta,respuesta) values(6,'No Responde');
