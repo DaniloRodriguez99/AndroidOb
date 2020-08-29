@@ -67,15 +67,15 @@ public class Controladora {
         return usuarioPersistente.buscarUsuarioPorId(pId);
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario() {
+    public ArrayList<Mascota> BuscarMascotasDeUnUsuario() {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(Usuario unUser) {
+    public ArrayList<Mascota> BuscarMascotasDeUnUsuario(Usuario unUser) {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(unUser.get_id()));
     }
 
-    public ArrayList<Mascota> BuscarMasctoasDeUnUsuario(int pId) {
+    public ArrayList<Mascota> BuscarMascotasDeUnUsuario(int pId) {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(pId));
     }
 
@@ -86,13 +86,25 @@ public class Controladora {
         return mascotaPersistente.buscarMascotaEspecifica(idmascota, buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
+    public boolean bajaMascota(Mascota mascota){
+        return mascotaPersistente.bajaMascota(mascota);
+    }
+    public boolean bajaMascota(int id){
+        return mascotaPersistente.bajaMascota(BuscarMascotaEspecifica(id));
+    }
+
+    public long TiempoDeVida()
+    {
+        return mascotaPersistente.TiempoDeVida(miSession.getMascota());
+    }
+
     public int NroMascotasDeUnUsuario() {
-        return BuscarMasctoasDeUnUsuario().size();
+        return BuscarMascotasDeUnUsuario().size();
     }
 
     public Mascota anteriorMascota() {
         ArrayList<Mascota> misMascotas = new ArrayList<>();
-        misMascotas = BuscarMasctoasDeUnUsuario();
+        misMascotas = BuscarMascotasDeUnUsuario();
 
         for (Mascota m : misMascotas) {
             if (m.get_id() == miSession.getMascota()) {
@@ -108,7 +120,7 @@ public class Controladora {
 
     public Mascota siguienteMascota() {
         ArrayList<Mascota> misMascotas = new ArrayList<>();
-        misMascotas = BuscarMasctoasDeUnUsuario();
+        misMascotas = BuscarMascotasDeUnUsuario();
 
         for (Mascota m : misMascotas) {
             if (m.get_id() == miSession.getMascota()) {

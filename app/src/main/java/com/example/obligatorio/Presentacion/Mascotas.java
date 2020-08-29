@@ -2,13 +2,18 @@ package com.example.obligatorio.Presentacion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -33,7 +38,14 @@ public class Mascotas extends AppCompatActivity {
     private FloatingActionButton btnCrear;
     private Button btnTrivia;
     private Session session;
+    private LinearLayout lytContent;
+    private LinearLayout lytMuerte;
+    private Animation fadeOut;
+    private Animation fadeIn;
 
+    private TextView msjMuerte;
+    private Button btnVolver;
+    private ImageView imgMascotaMuerte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +64,32 @@ public class Mascotas extends AppCompatActivity {
         btnJugar = (FloatingActionButton) findViewById(R.id.btnJugar_Mascotas);
         btnTrivia = (Button) findViewById(R.id.btnTrivia_Mascotas);
         btnCrear = (FloatingActionButton) findViewById(R.id.btnCrear_Mascotas);
+        lytContent = (LinearLayout) findViewById(R.id.lytContenido_Mascotas);
+
+
+        msjMuerte = (TextView) findViewById(R.id.msjMuerte_Mascotas);
+        lytMuerte = (LinearLayout) findViewById(R.id.mensajeMuerte_Mascotas);
+        btnVolver = (Button) findViewById(R.id.btnVolver_Mascota);
+        imgMascotaMuerte = (ImageView) findViewById(R.id.imgMuerte_Mascotas);
 
         /*Inicializamos la session*/
         session = new Session(getApplicationContext());
+
+        /*Animaciones*/
+        final Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lytMuerte.startAnimation(fadeOut);
+                lytMuerte.setVisibility(View.INVISIBLE);
+                lytContent.startAnimation(fadeIn);
+                lytContent.setVisibility(View.VISIBLE);
+                CargarMascotas();
+            }
+        });
+
 
         btnTrivia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +148,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                },5000);
+                }, 5000);
             }
         });
 
@@ -128,7 +163,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                },5000);
+                }, 5000);
             }
         });
 
@@ -143,7 +178,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                },5000);
+                }, 5000);
             }
         });
 
@@ -158,7 +193,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                },5000);
+                }, 5000);
             }
         });
 
@@ -171,15 +206,59 @@ public class Mascotas extends AppCompatActivity {
         }
     }
 
+    private void TiempoDeVida() {
+        final Controladora control = new Controladora(getApplicationContext());
+        long tiempo = 180000 - control.TiempoDeVida();
+        final Mascota mascotaActual = control.BuscarMascotaEspecifica(session.getMascota());
+        final Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
+        final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+
+        if (tiempo > 0) {
+            CountDownTimer countdownTimer = new CountDownTimer(tiempo, 1000) {
+                @Override
+                public void onTick(long l) {
+                    txtNombre.setText("" + l / 1000);
+                }
+
+                @Override
+                public void onFinish() {
+                    lytContent.startAnimation(fadeOut);
+                    lytContent.setVisibility(View.INVISIBLE);
+                    lytMuerte.startAnimation(fadeIn);
+                    lytMuerte.setVisibility(View.VISIBLE);
+
+                    CargarImagen(mascotaActual.get_tipo());
+                    msjMuerte.setText("Su mascota " + mascotaActual.get_nombre() + " a.... fallecido");
+                    control.bajaMascota(mascotaActual.get_id());
+                }
+            }.start();
+        } else {
+            lytContent.startAnimation(fadeOut);
+            lytContent.setVisibility(View.INVISIBLE);
+            lytMuerte.startAnimation(fadeIn);
+            lytMuerte.setVisibility(View.VISIBLE);
+
+
+            CargarImagen(mascotaActual.get_tipo());
+            msjMuerte.setText("Su mascota " + mascotaActual.get_nombre() + " a.... fallecido");
+            control.bajaMascota(mascotaActual.get_id());
+        }
+    }
+
+
     private void CargarMascotas() {
         Controladora control = new Controladora(getBaseContext());
         ArrayList<Mascota> misMascotas = new ArrayList<>();
-        misMascotas = control.BuscarMasctoasDeUnUsuario();
-        CargarMascota(misMascotas.get(0).get_nombre());
+        misMascotas = control.BuscarMascotasDeUnUsuario();
+        if (misMascotas.size() > 0) {
+            CargarMascota(misMascotas.get(0).get_nombre());
+        } else {
+            Intent i = new Intent(this, CrearMascota.class);
+            startActivity(i);
+        }
     }
 
-    private void CargarMascota()
-    {
+    private void CargarMascota() {
         Controladora control = new Controladora(getBaseContext());
         Mascota mascota = control.BuscarMascotaEspecifica(session.getMascota());
         CargarMascota(mascota.get_nombre());
@@ -194,6 +273,7 @@ public class Mascotas extends AppCompatActivity {
             txtNombre.setText(miMascota.get_nombre());
             CargarImagen(miMascota.get_tipo());
             session.setMascota(miMascota.get_id());
+            TiempoDeVida();
         }
     }
 
@@ -217,6 +297,7 @@ public class Mascotas extends AppCompatActivity {
                 break;
         }
         Glide.with(this).load(gif).into(imgMascota);
+        Glide.with(this).load(gif).into(imgMascotaMuerte);
     }
 
     public int HacerEjercicio() {

@@ -17,6 +17,12 @@ public class pMascota extends pConexion {
         return true;
     }
 
+    public boolean bajaMascota(Mascota mascota)
+    {
+        this.ModificarDatos("Delete from mascota where idmascota = " + mascota.get_id());
+        return true;
+    }
+
     public ArrayList<Mascota> buscarMascotasDeUnUsuario(Usuario pUsuario) {
         try {
             this.seleccionarDatos("select nombre, iduser, ultvcomio, ultvtomo, idmascota, tipo from mascota where iduser = " + pUsuario.get_id());
@@ -84,5 +90,24 @@ public class pMascota extends pConexion {
         {
             throw ex;
         }
+    }
+
+    public long TiempoDeVida(int id)
+    {
+        this.seleccionarDatos("select Cast ((julianday(Current_Timestamp) - julianday(ultvcomio)) * 24 * 60 * 60 As Integer)" +
+                " as tiempo from mascota where idmascota=" + id);
+
+        long segundosQuePasaron = 0;
+
+        while(!c.isAfterLast())
+        {
+            segundosQuePasaron = c.getLong(0);
+            c.moveToNext();
+        }
+
+        long milisegundosQuePasaron = segundosQuePasaron * 1000;
+
+        return milisegundosQuePasaron;
+
     }
 }

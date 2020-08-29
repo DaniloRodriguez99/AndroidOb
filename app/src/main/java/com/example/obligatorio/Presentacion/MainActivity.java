@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(i);
                             }
                             else if(unUsuario.get_admin() == false) {
-                                if (control.BuscarMasctoasDeUnUsuario().size() > 0) {
+                                if (control.BuscarMascotasDeUnUsuario().size() > 0) {
                                     Intent i = new Intent(MainActivity.this, Mascotas.class);
                                     startActivity(i);
                                 } else {
