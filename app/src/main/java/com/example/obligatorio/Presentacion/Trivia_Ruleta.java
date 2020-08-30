@@ -1,11 +1,9 @@
 package com.example.obligatorio.Presentacion;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -14,7 +12,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.R;
@@ -31,8 +28,10 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
     long lngDegrees = 0;
     private TextView lblEstado;
     private TextView lblPuntuacion;
+
     private FloatingActionButton btnvolverDesdeRuleta;
-    FloatingActionButton btnGirar;
+    private FloatingActionButton btnGirar;
+    private FloatingActionButton btnHistorial;
 
     private Session session;
 
@@ -44,17 +43,19 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().addFlags(1024);
-        requestWindowFeature(1);
-        super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_preguntado);
+        requestWindowFeature(1);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_trivia_ruleta);
 
         session = new Session(getApplicationContext());
         lblEstado = (TextView)findViewById(R.id.lblVecesTrivia);
         lblPuntuacion = (TextView)findViewById(R.id.lblPuntuacion_Trivia);
 
 
+        btnHistorial = (FloatingActionButton)findViewById(R.id.fabHistorial);
         btnGirar = (FloatingActionButton)findViewById(R.id.btnGirar);
         btnvolverDesdeRuleta = (FloatingActionButton)findViewById(R.id.btnvolverDesdeRuleta);
         imageRoulette = (ImageView)findViewById(R.id.imgRuleta);
@@ -63,6 +64,14 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
             @Override
             public void onClick(View view) {
                 i = new Intent(Trivia_Ruleta.this,Mascotas.class);
+                startActivity(i);
+            }
+        });
+
+        btnHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                i = new Intent(Trivia_Ruleta.this,Historial.class);
                 startActivity(i);
             }
         });

@@ -18,7 +18,7 @@ public class pConexion extends SQLiteOpenHelper {
     //Ruta donde se localizara la BDD
     private static String BDD_RUTA = "/data/data/com.example.obligatorio/databases/";
     //Nombre de la BDD
-    private static String BDD_NOMBRE = "androiiddb.s3db";
+    private static String BDD_NOMBRE = "androiidatabbb.s3db";
 
     @Override public void onOpen(SQLiteDatabase db) { super.onOpen(db); db.disableWriteAheadLogging(); }
 

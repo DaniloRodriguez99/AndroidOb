@@ -5,6 +5,8 @@
     <color name="colorAccent">#000</color>
     <color name="verde" android:id="@+id/verde">#62E45D</color>
     <color name="rojo">#F62B32</color>
+    <color name="naranja">#FF8C00</color>
+    <color name="naranjamasfuerte">#FF6D00 </color>
     <color name="violeta">#574BBC</color>
     <color name="Blanco">#fff</color>
 </resources>

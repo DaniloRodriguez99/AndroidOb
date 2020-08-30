@@ -18,7 +18,7 @@ CREATE TABLE [mascota] (
 [ultvtomo] TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 [tipo] TEXT  NOT NULL
 )
-CREATE TABLE Trivia (
+CREATE TABLE trivia (
 idtrivia INTEGER PRIMARY KEY,
 puntuacion INTEGER NOT NULL,
 fechayhora TEXT NOT NULL,
@@ -47,7 +47,23 @@ insert into pregunta(pregunta,tipo) values('¿Que oso se caracteriza por comer b
 insert into pregunta(pregunta,tipo) values('¿Como se llama el perro que come galletas y atrapa moustruos?','Perro');
 insert into pregunta(pregunta,tipo) values('¿Los gatos se caracterizan por ser la mascota de?','Gato');
 ;
-
+insert into pregunta(pregunta,tipo) values('¿Como se le llama a la aglomeracion de peces?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Los osos tienen la piel de color?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Un perro es tan inteligente como?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Cual es el promedio de vida de un gato domestico?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Cual es el pez mas venenoso de todos?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Los osos no necesitan?','Oso')
+insert into pregunta(pregunta,tipo) values('¿Cuantas veces mas que el humano pueden oir los perros?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Los Gatos disfrutan el apareamiento?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Cual de estos es el pez mas grande?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿Porque se dice que los osos no se mojan?','Oso')
+insert into pregunta(pregunta,tipo) values('¿El sentido de olfato de un perro es superior al nuestro por?','Perro');
+insert into pregunta(pregunta,tipo) values('¿Cuando los gatos maullan los hacen para?','Gato');
+insert into pregunta(pregunta,tipo) values('¿Cual es el pez mas grande?','Pescado');
+insert into pregunta(pregunta,tipo) values('¿De que color es Winnie Pooh?','Oso')
+insert into pregunta(pregunta,tipo) values('¿De que color es Scooby Doo?','Perro');
+insert into pregunta(pregunta,tipo) values('¿De que color es el gato de Alicia en el Pais de las Maravillas?','Gato');
+;
 
 CREATE TABLE [respuesta] (
 [idrespuesta] INTEGER  NOT NULL PRIMARY KEY,
@@ -141,6 +157,86 @@ insert into respuesta(idpregunta,correcta,respuesta) values(16,1,'Brujas');
 insert into respuesta(idpregunta,respuesta) values(16,'Princesas');
 insert into respuesta(idpregunta,respuesta) values(16,'No Responde');
 
+
+
+insert into respuesta(idpregunta,respuesta) values(17,'Conjunto de peces');
+insert into respuesta(idpregunta,respuesta) values(17,'Manada');
+insert into respuesta(idpregunta,correcta,respuesta) values(17,1,'Cardumen');
+insert into respuesta(idpregunta,respuesta) values(17,'No Responde');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(18,1,'Negra');
+insert into respuesta(idpregunta,respuesta) values(18,'Blanca');
+insert into respuesta(idpregunta,respuesta) values(18,'Marron');
+insert into respuesta(idpregunta,respuesta) values(18,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(19,'Un humano de 10');
+insert into respuesta(idpregunta,correcta,respuesta) values(19,1,'Un humano de 2');
+insert into respuesta(idpregunta,respuesta) values(19,'Un humano de 30');
+insert into respuesta(idpregunta,respuesta) values(19,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(20,'30');
+insert into respuesta(idpregunta,correcta,respuesta) values(20,1,'16');
+insert into respuesta(idpregunta,respuesta) values(20,'1');
+insert into respuesta(idpregunta,respuesta) values(20,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(21,'Pez Globo');
+insert into respuesta(idpregunta,respuesta) values(21,'Pez Barracuda');
+insert into respuesta(idpregunta,correcta,respuesta) values(21,1,'Pez Piedra');
+insert into respuesta(idpregunta,respuesta) values(21,'No Responde');
+
+
+insert into respuesta(idpregunta,respuesta) values(22,'Comer');
+insert into respuesta(idpregunta,respuesta) values(22,'Hacer sus necesidades');
+insert into respuesta(idpregunta,correcta,respuesta) values(22,1,'Beber Agua');
+insert into respuesta(idpregunta,respuesta) values(22,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(23,'10 veces');
+insert into respuesta(idpregunta,correcta,respuesta) values(23,1,'4 veces');
+insert into respuesta(idpregunta,respuesta) values(23,'16 veces');
+insert into respuesta(idpregunta,respuesta) values(23,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(24,'No');
+insert into respuesta(idpregunta,correcta,respuesta) values(24,1,'Si');
+insert into respuesta(idpregunta,respuesta) values(24,'Si pero mas seguro de vos mismo');
+insert into respuesta(idpregunta,respuesta) values(24,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(25,'Ballena Blanca');
+insert into respuesta(idpregunta,respuesta) values(25,'Ballena Azul');
+insert into respuesta(idpregunta,correcta,respuesta) values(25,1,'Tiburon Ballena');
+insert into respuesta(idpregunta,respuesta) values(25,'No Responde');
+
+
+insert into respuesta(idpregunta,correcta,respuesta) values(26,1,'Porque son impermeables');
+insert into respuesta(idpregunta,correcta,respuesta) values(26,1,'Porque poseen dos capas de piel');
+insert into respuesta(idpregunta,respuesta) values(26,'Porque nunca tocan el agua');
+insert into respuesta(idpregunta,respuesta) values(26,'No Responde');
+
+insert into respuesta(idpregunta,correcta,respuesta) values(27,1,'De 1000 a 10000 millones de veces mejor al nuestro');
+insert into respuesta(idpregunta,respuesta) values(27,'De 10 a 20 veces mejor al nuestro');
+insert into respuesta(idpregunta,respuesta) values(27,'De 100 a 300 veces mejor al nuestro');
+insert into respuesta(idpregunta,respuesta) values(27,'No Responde');
+
+insert into respuesta(idpregunta,correcta,respuesta) values(28,1,'Comunicarse con humanos');
+insert into respuesta(idpregunta,respuesta) values(28,'Comunicarse con otros gatos');
+insert into respuesta(idpregunta,respuesta) values(28,'Romper los huevos');
+insert into respuesta(idpregunta,respuesta) values(28,'No Responde');
+
+
+insert into respuesta(idpregunta,respuesta) values(29,'Marron');
+insert into respuesta(idpregunta,respuesta) values(29,'Gris');
+insert into respuesta(idpregunta,correcta,respuesta) values(29,1,'Amarillo');
+insert into respuesta(idpregunta,respuesta) values(29,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(30,'Marron con Gris');
+insert into respuesta(idpregunta,correcta,respuesta) values(30,1,'Marron con Negro');
+insert into respuesta(idpregunta,respuesta) values(30,'Marron');
+insert into respuesta(idpregunta,respuesta) values(30,'No Responde');
+
+insert into respuesta(idpregunta,respuesta) values(31,'Gris');
+insert into respuesta(idpregunta,correcta,respuesta) values(31,1,'Gris y Celeste');
+insert into respuesta(idpregunta,respuesta) values(31,'Gris y Negro');
+insert into respuesta(idpregunta,respuesta) values(31,'No Responde');
 
 CREATE TABLE [historial] (
 [id] INTEGER  NOT NULL PRIMARY KEY,

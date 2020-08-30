@@ -2,6 +2,7 @@ package com.example.obligatorio.Presentacion;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,6 +67,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_trivia_pregunta);
@@ -88,6 +90,9 @@ public class Trivia_Pregunta extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 tiempoRestante = l/1000;
+                if(tiempoRestante == 10) { txtTimmer.setBackground(getResources().getDrawable(R.drawable.timmernaranja)); }
+                if(tiempoRestante == 5){txtTimmer.setBackground(getResources().getDrawable(R.drawable.timmermasnaranja));}
+                if(tiempoRestante == 3){txtTimmer.setBackground(getResources().getDrawable(R.drawable.timmerrojo));}
             txtTimmer.setText(tiempoRestante+"");
             }
 
@@ -98,17 +103,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
-                count = new CountDownTimer(2000,1000) {//Finaliza esta Activity Luego de 2 Segs
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        finish();
-                    }
-                }.start();
+                finish();
             }
         }.start();
 
@@ -188,7 +183,6 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 SetearPregunta();
                 TraerRespuestas();
                 SetearEstadoDeJugadas(4);
-               // Toast.makeText(this,"Última Pregunta!!",Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -214,6 +208,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         finish();
                     }
                 }.start();
+                Respuesta1.setOnClickListener(null);
 
             }
         });
@@ -239,6 +234,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         finish();
                     }
                 }.start();
+                Respuesta2.setOnClickListener(null);
             }
         });
 
@@ -263,6 +259,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         finish();
                     }
                 }.start();
+                Respuesta3.setOnClickListener(null);
             }
         });
 
@@ -298,27 +295,27 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
     public void SetearPuntuacion(long estadoDelContador)
     {
-        if(unaRespuesta.is_correcta() && estadoDelContador > 50000)
+        if(unaRespuesta.is_correcta() && estadoDelContador >= 50000)
         {
             session.setPuntuacion(session.getPuntuacion() + 60);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 50000 && estadoDelContador > 40000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 50000 && estadoDelContador >= 40000)
         {
             session.setPuntuacion(session.getPuntuacion() + 40);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 40000 && estadoDelContador > 30000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 40000 && estadoDelContador >= 30000)
         {
             session.setPuntuacion(session.getPuntuacion() + 30);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 30000 && estadoDelContador > 20000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 30000 && estadoDelContador >= 20000)
         {
             session.setPuntuacion(session.getPuntuacion() + 20);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 20000 && estadoDelContador > 10000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 20000 && estadoDelContador >= 10000)
         {
             session.setPuntuacion(session.getPuntuacion() + 15);
         }
-        if(unaRespuesta.is_correcta() && estadoDelContador < 10000 && estadoDelContador > 1000)
+        if(unaRespuesta.is_correcta() && estadoDelContador < 10000)
         {
             session.setPuntuacion(session.getPuntuacion() + 10);
         }
@@ -379,7 +376,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
             Trivia unaTrivia = new Trivia();
             unaTrivia.set_puntuacion(session.getPuntuacion());
             unaTrivia.set_usuario(controladora.buscarUsuarioPorId(session.getIdUsuario()));
-            unaTrivia.set_fecha(LocalDateTime.now());
+            unaTrivia.set_fecha(LocalDateTime.now() + "");
 
             controladora.altaTrivia(unaTrivia);
             List<Historial> lista = session.getHistorial();

@@ -9,10 +9,10 @@ public class Trivia implements Serializable {
     private int _id;
     private int _puntuacion;
     private Usuario _usuario;
-    private LocalDateTime _fecha;
+    private String _fecha;
 
 
-    public Trivia(int pId, int pPuntuacion, Usuario pUsuario, LocalDateTime pFecha) {
+    public Trivia(int pId, int pPuntuacion, Usuario pUsuario, String pFecha) {
         _id = pId;
         _puntuacion = pPuntuacion;
         _usuario = pUsuario;
@@ -41,11 +41,11 @@ public class Trivia implements Serializable {
         this._usuario = _usuario;
     }
 
-    public LocalDateTime get_fecha() {
+    public String get_fecha() {
         return _fecha;
     }
 
-    public void set_fecha(LocalDateTime _fecha) {
+    public void set_fecha(String _fecha) {
         this._fecha = _fecha;
     }
 }

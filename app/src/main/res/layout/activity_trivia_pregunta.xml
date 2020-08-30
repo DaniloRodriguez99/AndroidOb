@@ -16,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:gravity="center">
             <TextView
@@ -28,7 +29,8 @@
                 android:background="@drawable/timmer"
                 android:gravity="center_vertical"
                 android:textSize="35dp"
-                android:fontFamily="@font/modak">
+                android:fontFamily="@font/modak"
+                tools:ignore="RtlCompat">
 
             </TextView>
         </LinearLayout>
@@ -44,21 +46,20 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:background="@drawable/preguntadohojas"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:textAlignment="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtPreguntaTrivia"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtPreguntaTrivia"
-                    android:layout_marginTop="80dp"
                     android:fontFamily="@font/modak"
+                    android:gravity="center_vertical"
+                    android:text="Pregunta"
                     android:textAlignment="center"
-                    android:text="Preguntaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     android:textColor="#000"
-                    android:textSize="22dp"
-                    android:gravity="center_horizontal" />
+                    android:textSize="22sp"
+                    tools:ignore="RtlCompat" />
             </LinearLayout>
         </RelativeLayout>
 

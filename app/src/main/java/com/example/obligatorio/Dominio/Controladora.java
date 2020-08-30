@@ -1,6 +1,9 @@
 package com.example.obligatorio.Dominio;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.obligatorio.Common.Historial;
 import com.example.obligatorio.Common.Mascota;
@@ -151,6 +154,11 @@ public class Controladora {
     public int TraerIdUltimaTrivia()
     {
         return triviaPersistente.ObtenerUltimoIdTrivia();
+    }
+
+    public ArrayList<Trivia>TraerTriviasdeunUsuario()
+    {
+        return triviaPersistente.TraerTriviasDeUnUsuario(buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
 }
