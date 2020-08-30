@@ -15,7 +15,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:gravity="center">
@@ -36,7 +37,8 @@
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="3"
             android:padding="0dp"
             android:orientation="vertical">
 
@@ -65,8 +67,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="4"
             android:layout_marginTop="50dp"
-            android:layout_height="wrap_content"
 
             android:orientation="vertical">
 
@@ -96,7 +99,6 @@
                 android:layout_marginHorizontal="60dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/respuestas"
-                android:layout_marginBottom="10dp"
                 android:elevation="10dp"
                 android:text="Respuesta 3" />
         </LinearLayout>

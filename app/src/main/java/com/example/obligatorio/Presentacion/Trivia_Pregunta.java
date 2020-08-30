@@ -209,6 +209,8 @@ public class Trivia_Pregunta extends AppCompatActivity {
                     }
                 }.start();
                 Respuesta1.setOnClickListener(null);
+                Respuesta2.setOnClickListener(null);
+                Respuesta3.setOnClickListener(null);
 
             }
         });
@@ -234,7 +236,10 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         finish();
                     }
                 }.start();
+
+                Respuesta1.setOnClickListener(null);
                 Respuesta2.setOnClickListener(null);
+                Respuesta3.setOnClickListener(null);
             }
         });
 
@@ -259,6 +264,9 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         finish();
                     }
                 }.start();
+
+                Respuesta1.setOnClickListener(null);
+                Respuesta2.setOnClickListener(null);
                 Respuesta3.setOnClickListener(null);
             }
         });
