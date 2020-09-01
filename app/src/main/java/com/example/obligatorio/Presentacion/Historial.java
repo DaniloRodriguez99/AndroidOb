@@ -32,7 +32,6 @@ public class Historial extends AppCompatActivity {
 
     private ListView listview;
     private ArrayList<Trivia>ArrayTrivias = new ArrayList<>();
-     ArrayList<String> mNombresTrivias;
      ArrayList<Integer> mPuntuacionesTrivias;
      ArrayList<String> mFechas;
 
@@ -45,7 +44,7 @@ public class Historial extends AppCompatActivity {
         setContentView(R.layout.activity_historial);
 
         TraerDatos();
-        SetearDatos();
+        ModificarDatos();
 
         listview = (ListView)findViewById(R.id.lstViewHistorial);
         fabVolver = (FloatingActionButton)findViewById(R.id.fabvolverDesdeHistorial);
@@ -57,7 +56,7 @@ public class Historial extends AppCompatActivity {
             }
         });
         //now create an adapter class
-        MyAdapter adapter = new MyAdapter(this,mNombresTrivias,mPuntuacionesTrivias,mFechas);
+        MyAdapter adapter = new MyAdapter(this,mPuntuacionesTrivias,mFechas);
         listview.setAdapter(adapter);
 
         //now set item click on list view
@@ -73,17 +72,15 @@ public class Historial extends AppCompatActivity {
     class MyAdapter extends ArrayAdapter<String>
     {
         Context context;
-        ArrayList<String> rNombresTrivia;
-        ArrayList<Integer> rPuntuaciones;
-        ArrayList<String> rFechas;
+        ArrayList<Integer> rTriviapuntuacion;
+        ArrayList<String> rTrivifecha;
 
-        MyAdapter (Context c, ArrayList<String> trivianombre,ArrayList<Integer>puntuaciones,ArrayList<String> fechas)
+        MyAdapter (Context c,ArrayList<Integer>triviapuntuacion,ArrayList<String> triviafecha)
         {
-            super(c, R.layout.filashistorial, R.id.txtNombreTriviaHistorial,trivianombre);
+            super(c, R.layout.filashistorial,R.id.txtFechaTriviaHistorial,triviafecha);
             this.context = c;
-            this.rNombresTrivia = trivianombre;
-            this.rPuntuaciones = puntuaciones;
-            this.rFechas = fechas;
+            this.rTriviapuntuacion = triviapuntuacion;
+            this.rTrivifecha = triviafecha;
 
         }
 
@@ -98,9 +95,9 @@ public class Historial extends AppCompatActivity {
 
 //now set our resource on views
 
-            txtNombreTriviaHistorial.setText(rNombresTrivia.get(position));
-            txtPuntuacionHistorial.setText(rPuntuaciones.get(position) + "");
-            txtFechaHistorial.setText(rFechas.get(position));
+            txtNombreTriviaHistorial.setText("Trivia " + (position + 1));
+            txtPuntuacionHistorial.setText(rTriviapuntuacion.get(position) + "");
+            txtFechaHistorial.setText(rTrivifecha.get(position));
 
             return fila;
         }
@@ -112,20 +109,19 @@ public class Historial extends AppCompatActivity {
         ArrayTrivias = unaControladora.TraerTriviasdeunUsuario();
     }
 
-    public void SetearDatos()
+    public void ModificarDatos()
     {
-        mNombresTrivias = new ArrayList<>();
         mPuntuacionesTrivias = new ArrayList<>();
-        String fecha;
         mFechas = new ArrayList<>();
+        String fecha;
         for(int i=0; i<ArrayTrivias.size();i++)
         {
-            mNombresTrivias.add("Trivia " + (i + 1));
-            mPuntuacionesTrivias.add(ArrayTrivias.get(i).get_puntuacion());
             fecha = "Fecha:" + ArrayTrivias.get(i).get_fecha();
             fecha = fecha.replace("T", " Hora:");
             fecha = removeLastChar(fecha);
-            mFechas.add(fecha);
+            ArrayTrivias.get(i).set_fecha(fecha);
+            mFechas.add(ArrayTrivias.get(i).get_fecha());
+            mPuntuacionesTrivias.add(ArrayTrivias.get(i).get_puntuacion());
         }
     }
 

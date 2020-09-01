@@ -196,8 +196,8 @@ insert into respuesta(idpregunta,correcta,respuesta) values(23,1,'4 veces');
 insert into respuesta(idpregunta,respuesta) values(23,'16 veces');
 insert into respuesta(idpregunta,respuesta) values(23,'No Responde');
 
-insert into respuesta(idpregunta,respuesta) values(24,'No');
-insert into respuesta(idpregunta,correcta,respuesta) values(24,1,'Si');
+insert into respuesta(idpregunta,correcta,respuesta) values(24,1,'No');
+insert into respuesta(idpregunta,respuesta) values(24,'Si');
 insert into respuesta(idpregunta,respuesta) values(24,'Si pero mas seguro de vos mismo');
 insert into respuesta(idpregunta,respuesta) values(24,'No Responde');
 
