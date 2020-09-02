@@ -71,7 +71,7 @@ public class Trivia_Ruleta extends AppCompatActivity implements Animation.Animat
         btnHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                i = new Intent(Trivia_Ruleta.this,Historial.class);
+                i = new Intent(Trivia_Ruleta.this, Historial_Puntuaciones.class);
                 startActivity(i);
             }
         });

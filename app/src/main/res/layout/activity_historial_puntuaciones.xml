@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
-    tools:context=".Presentacion.Historial">
+    tools:context=".Presentacion.Historial_Puntuaciones">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -42,20 +42,24 @@
 <ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/lstViewHistorial">
+    android:id="@+id/lstViewHistorialPuntuaciones">
 </ListView>
-
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="40dp"
+            android:paddingBottom="40dp"
+            >
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
-        android:id="@+id/fabvolverDesdeHistorial"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="40dp"
-        app:borderWidth="0dp"
+        android:id="@+id/fabvolverDesdeHistorial"
         android:src="@drawable/ic_volver"
-        android:backgroundTint="@color/violeta"
-        android:layout_alignParentLeft="true" />
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/violeta" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>
 
 

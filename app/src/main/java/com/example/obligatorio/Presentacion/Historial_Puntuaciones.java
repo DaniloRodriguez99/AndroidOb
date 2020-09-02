@@ -2,11 +2,10 @@ package com.example.obligatorio.Presentacion;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,15 +17,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Trivia;
-import com.example.obligatorio.Common.Usuario;
 import com.example.obligatorio.Dominio.Controladora;
 import com.example.obligatorio.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class Historial extends AppCompatActivity {
+public class Historial_Puntuaciones extends AppCompatActivity {
+
+    private Session session;
 
     private FloatingActionButton fabVolver;
 
@@ -41,12 +42,12 @@ public class Historial extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_historial);
-
+        setContentView(R.layout.activity_historial_puntuaciones);
+        session = new Session(getApplicationContext());
         TraerDatos();
         ModificarDatos();
 
-        listview = (ListView)findViewById(R.id.lstViewHistorial);
+        listview = (ListView)findViewById(R.id.lstViewHistorialPuntuaciones);
         fabVolver = (FloatingActionButton)findViewById(R.id.fabvolverDesdeHistorial);
 
         fabVolver.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +64,10 @@ public class Historial extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    Toast.makeText(Historial.this,"Trivia " + (position + 1),Toast.LENGTH_SHORT).show();
+                    int idTrivia = ArrayTrivias.get(position).get_id();
+                    session.setIdTrivia(idTrivia);
+                    Intent i = new Intent(Historial_Puntuaciones.this,Historial_Respuestas.class);
+                    startActivity(i);
             }
         });
     }
@@ -77,7 +80,7 @@ public class Historial extends AppCompatActivity {
 
         MyAdapter (Context c,ArrayList<Integer>triviapuntuacion,ArrayList<String> triviafecha)
         {
-            super(c, R.layout.filashistorial,R.id.txtFechaTriviaHistorial,triviafecha);
+            super(c, R.layout.filashistorial_puntuacion,R.id.txtFechaTriviaHistorial,triviafecha);
             this.context = c;
             this.rTriviapuntuacion = triviapuntuacion;
             this.rTrivifecha = triviafecha;
@@ -88,7 +91,7 @@ public class Historial extends AppCompatActivity {
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View fila = layoutInflater.inflate(R.layout.filashistorial, parent, false);
+            View fila = layoutInflater.inflate(R.layout.filashistorial_puntuacion, parent, false);
             TextView txtNombreTriviaHistorial = fila.findViewById(R.id.txtNombreTriviaHistorial);
             TextView txtPuntuacionHistorial = fila.findViewById(R.id.txtPuntuacionTriviaHistorial);
             TextView txtFechaHistorial = fila.findViewById(R.id.txtFechaTriviaHistorial);

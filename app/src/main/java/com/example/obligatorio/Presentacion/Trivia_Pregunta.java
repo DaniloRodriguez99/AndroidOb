@@ -2,7 +2,6 @@ package com.example.obligatorio.Presentacion;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -100,7 +99,6 @@ public class Trivia_Pregunta extends AppCompatActivity {
             @Override
             public void onFinish() {
                 unaRespuesta = noResponde;//Setea la respuesta final como no respondida
-                SetearPuntuacion(tiempoRestante*1000);
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 finish();
@@ -388,9 +386,9 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
             controladora.altaTrivia(unaTrivia);
             List<Historial> lista = session.getHistorial();
+            unaTrivia.set_id(controladora.TraerIdUltimaTrivia());
             for(Historial h:lista)
             {
-                unaTrivia.set_id(controladora.TraerIdUltimaTrivia());
                 h.set_Trivia(unaTrivia);
                 controladora.altaHistorial(h);
             }

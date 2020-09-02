@@ -161,4 +161,9 @@ public class Controladora {
         return triviaPersistente.TraerTriviasDeUnUsuario(buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
+    public ArrayList<Respuesta>TraerPreguntaYRespuesta(Trivia pTrivia)
+    {
+        return historialPersistente.TraerPreguntaYRespuestaDeUsuario(pTrivia);
+    }
+
 }
