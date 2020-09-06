@@ -7,11 +7,22 @@
     android:background="@drawable/fondo"
     android:orientation="vertical"
     tools:context=".Presentacion.Historial_Puntuaciones">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    android:orientation="horizontal">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCerrarHistorial"
+        android:src="@drawable/cruz_close"
+        android:background="@android:color/transparent"></ImageButton>
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="70dp">
+        android:layout_marginTop="40dp">
 
         <LinearLayout
             android:layout_width="100dp"
@@ -50,24 +61,8 @@
             android:id="@+id/lstViewHistorialPuntuaciones"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
-
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:paddingLeft="40dp"
-            android:paddingBottom="40dp">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabvolverDesdeHistorial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/violeta"
-                android:src="@drawable/ic_volver"
-                app:borderWidth="0dp" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </RelativeLayout>
+
 
 
 </LinearLayout>

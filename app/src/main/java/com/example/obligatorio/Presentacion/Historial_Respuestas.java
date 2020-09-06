@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +33,8 @@ public class Historial_Respuestas extends AppCompatActivity {
     private TextView txtRespuesta4;
     private TextView txtRespuesta5;
 
+    private ImageButton btnCerrarHistorial;
+
     private View lytRespuesta1;
     private View lytRespuesta2;
     private View lytRespuesta3;
@@ -44,9 +48,14 @@ public class Historial_Respuestas extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_respuestas);
         session = new Session(getApplicationContext());
+
+        btnCerrarHistorial = (ImageButton)findViewById(R.id.btnCerrarHistorialRespuestas);
 
         txtPregunta1 = (TextView)findViewById(R.id.txtPregunta1);
         txtPregunta2 = (TextView)findViewById(R.id.txtPregunta2);
@@ -65,6 +74,13 @@ public class Historial_Respuestas extends AppCompatActivity {
         lytRespuesta3 = (View)findViewById(R.id.lytRespuesta3);
         lytRespuesta4 = (View)findViewById(R.id.lytRespuesta4);
         lytRespuesta5 = (View)findViewById(R.id.lytRespuesta5);
+
+        btnCerrarHistorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         TraerPreguntasYRespuestas();
         SetearPreguntasYRespuestas();

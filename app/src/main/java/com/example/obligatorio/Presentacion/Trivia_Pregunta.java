@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -36,6 +37,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private Button Respuesta2;
     private Button Respuesta3;
     private Respuesta noResponde;
+    private ImageButton btnSaltearPregunta;
 
     private CountDownTimer countDownTimer;
     private CountDownTimer count;
@@ -78,6 +80,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
         txtPregunta = (TextView)findViewById(R.id.txtPreguntaTrivia);
         txtTimmer = (TextView)findViewById(R.id.txtTimmer);
+        btnSaltearPregunta = (ImageButton)findViewById(R.id.btnSaltearPregunta);
 
         Respuesta1 = (Button)findViewById(R.id.boton1);
         Respuesta2 = (Button)findViewById(R.id.boton2);
@@ -104,6 +107,17 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 finish();
             }
         }.start();
+
+        btnSaltearPregunta.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                unaRespuesta = noResponde;//Setea la respuesta final como no respondida
+                AgregarAlHistorial();
+                AltaTriviayHistorial();
+                finish();
+            }
+        });
 
 
         this.fondoSegunCategoria();

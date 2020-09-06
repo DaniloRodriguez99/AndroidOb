@@ -13,15 +13,16 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Trivia;
 import com.example.obligatorio.Dominio.Controladora;
 import com.example.obligatorio.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class Historial_Puntuaciones extends AppCompatActivity {
 
     private Session session;
 
-    private FloatingActionButton fabVolver;
+    private ImageButton btnCerrar;
 
     private ListView listview;
     private ArrayList<Trivia>ArrayTrivias = new ArrayList<>();
@@ -48,9 +49,9 @@ public class Historial_Puntuaciones extends AppCompatActivity {
         ModificarDatos();
 
         listview = (ListView)findViewById(R.id.lstViewHistorialPuntuaciones);
-        fabVolver = (FloatingActionButton)findViewById(R.id.fabvolverDesdeHistorial);
+        btnCerrar = (ImageButton)findViewById(R.id.btnCerrarHistorial);
 
-        fabVolver.setOnClickListener(new View.OnClickListener() {
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
