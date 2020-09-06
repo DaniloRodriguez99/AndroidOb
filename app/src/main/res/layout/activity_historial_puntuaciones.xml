@@ -7,61 +7,67 @@
     android:background="@drawable/fondo"
     android:orientation="vertical"
     tools:context=".Presentacion.Historial_Puntuaciones">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="70dp">
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp">
-        <ImageView
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/logo"></ImageView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
-        android:layout_gravity="end"
-        android:gravity="center">
-        <TextView
-            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:paddingLeft="5dp"
-            android:textSize="30dp"
-            android:textColor="#000"
-            android:fontFamily="@font/modak"
-            android:text="Historial de Puntuaciones"></TextView>
+            android:layout_height="90dp"
+            android:layout_gravity="end"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/modak"
+                android:paddingLeft="5dp"
+                android:text="Historial de Puntuaciones"
+                android:textColor="#000"
+                android:textSize="30dp"></TextView>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/lstViewHistorialPuntuaciones">
-</ListView>
+
+        <ListView
+            android:id="@+id/lstViewHistorialPuntuaciones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:paddingLeft="40dp"
-            android:paddingBottom="40dp"
-            >
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fabvolverDesdeHistorial"
-        android:src="@drawable/ic_volver"
-        app:borderWidth="0dp"
-        android:backgroundTint="@color/violeta" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</RelativeLayout>
+            android:paddingBottom="40dp">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabvolverDesdeHistorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/violeta"
+                android:src="@drawable/ic_volver"
+                app:borderWidth="0dp" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>
