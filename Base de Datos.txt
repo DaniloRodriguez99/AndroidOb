@@ -249,5 +249,5 @@ CREATE TABLE [publicidad] (
 [id] INTEGER  NOT NULL PRIMARY KEY,
 [titulo] VARCHAR(30)  NOT NULL,
 [descripcion] VARCHAR(100)  NOT NULL,
-[imagen] INTEGER  NOT NULL
+[imagen] BLOB  NOT NULL
 )

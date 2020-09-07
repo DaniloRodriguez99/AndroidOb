@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 
 import com.example.obligatorio.Common.Historial;
 import com.example.obligatorio.Common.Mascota;
+import com.example.obligatorio.Common.Publicidad;
 import com.example.obligatorio.Common.Respuesta;
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Trivia;
@@ -14,6 +15,7 @@ import com.example.obligatorio.Common.Usuario;
 import com.example.obligatorio.Common.Pregunta;
 import com.example.obligatorio.Persistencia.pHistorial;
 import com.example.obligatorio.Persistencia.pMascota;
+import com.example.obligatorio.Persistencia.pPublicidad;
 import com.example.obligatorio.Persistencia.pRespuesta;
 import com.example.obligatorio.Persistencia.pTrivia;
 import com.example.obligatorio.Persistencia.pUsuario;
@@ -30,6 +32,7 @@ public class Controladora {
     private pRespuesta respuestaPersistente;
     private pTrivia triviaPersistente;
     private pHistorial historialPersistente;
+    private pPublicidad publicidadPersistente;
     private Session miSession;
 
     public Controladora(Context contexto) {
@@ -39,6 +42,7 @@ public class Controladora {
         respuestaPersistente = new pRespuesta(contexto);
         triviaPersistente = new pTrivia(contexto);
         historialPersistente = new pHistorial(contexto);
+        publicidadPersistente = new pPublicidad(contexto);
         miSession = new Session(contexto);
     }
     public Controladora(){}
@@ -164,6 +168,11 @@ public class Controladora {
     public ArrayList<Respuesta>TraerPreguntaYRespuesta(Trivia pTrivia)
     {
         return historialPersistente.TraerPreguntaYRespuestaDeUsuario(pTrivia);
+    }
+
+    public boolean AltaPublicidad(Publicidad pPublicidad)
+    {
+        return publicidadPersistente.AltaPublicidad(pPublicidad);
     }
 
 }
