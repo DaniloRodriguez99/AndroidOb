@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.obligatorio.Common.Mascota;
@@ -34,6 +35,8 @@ public class CrearMascota extends AppCompatActivity {
     protected ImageView siguiente;
 
     protected EditText etNombre;
+
+    protected TextView tv_tipomascota;
 
     protected int urlGif;
     protected int blanco;
@@ -58,6 +61,10 @@ public class CrearMascota extends AppCompatActivity {
         btnPez = (FloatingActionButton) findViewById(R.id.btnPez_CrearMascota);
         fabCrear = (FloatingActionButton) findViewById(R.id.fabCrear_CrearMascota);
 
+        /*Asignamos el text view*/
+        tv_tipomascota = (TextView) findViewById(R.id.tv_tipodemascota_CrearMascotas);
+
+
         /*Asignamos el EditText*/
         etNombre = (EditText) findViewById(R.id.etNombre_CrearMascota);
 
@@ -66,7 +73,7 @@ public class CrearMascota extends AppCompatActivity {
         siguiente = (ImageView) findViewById(R.id.flecha_siguiente_CrearMascotas);
 
 
-        seleccionar("ninguna");
+        seleccionar("gato");
 
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,6 +170,8 @@ public class CrearMascota extends AppCompatActivity {
                 Glide.with(getApplicationContext()).load(R.drawable.gato_quieto).into(mascota);
                 break;
         }
+
+        tv_tipomascota.setText(tipoDeMascota.toUpperCase());
 
         btnGato.setBackgroundTintList(ColorStateList.valueOf(gato));
         btnPerro.setBackgroundTintList(ColorStateList.valueOf(perro));

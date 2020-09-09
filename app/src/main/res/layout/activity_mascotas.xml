@@ -16,8 +16,9 @@
 
         <ImageView
             android:id="@+id/imgMuerte_Mascotas"
-            android:layout_width="wrap_content"
+            android:layout_width="185dp"
             android:layout_height="150dp"
+            android:layout_centerInParent="true"
             android:layout_marginVertical="100dp"
             android:src="@drawable/logo"
             android:layout_gravity="center"
@@ -65,10 +66,12 @@
 
             <ImageView
                 android:id="@+id/imgMascota_Mascotas"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_width="185dp"
+                android:layout_height="150dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/logo" />
+                android:layout_margin="0dp"
+                android:paddingTop="0dp"
+                />
         </RelativeLayout>
 
         <RelativeLayout

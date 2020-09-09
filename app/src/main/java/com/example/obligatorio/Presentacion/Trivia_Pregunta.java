@@ -477,14 +477,6 @@ public class Trivia_Pregunta extends AppCompatActivity {
         player.start();
     }
 
-    public void pause()
-    {
-        if(player != null)
-        {
-            player.pause();
-        }
-    }
-
     public void stop()
     {
         stopPlayer();

@@ -12,11 +12,7 @@
         android:roundIcon="@mipmap/icono_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Presentacion.Alta_Publicidad"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".Presentacion.Alta_Publicidad"> </activity>
         <activity android:name=".Presentacion.Historial_Respuestas" />
         <activity android:name=".Presentacion.Historial_Puntuaciones" />
         <activity android:name=".Presentacion.Administracion" />
@@ -25,7 +21,13 @@
         <activity android:name=".Presentacion.Trivia_Pregunta" />
         <activity android:name=".Presentacion.Trivia_Ruleta" />
         <activity android:name=".Presentacion.Registro" />
-        <activity android:name=".Presentacion.Load" />
+        <activity android:name=".Presentacion.Load" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Presentacion.MainActivity">
 
         </activity>

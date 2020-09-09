@@ -110,4 +110,18 @@ public class pMascota extends pConexion {
         return milisegundosQuePasaron;
 
     }
+
+    public boolean DarComida(Mascota mascota)
+    {
+        this.ModificarDatos("update mascota set ultvcomio = Current_Timestamp where idmascota = " + mascota.get_id());
+        return true;
+    }
+
+    public boolean DarAgua(Mascota mascota)
+    {
+        this.ModificarDatos("update mascota set ultvtomo = Current_Timestamp where idmascota = " + mascota.get_id());
+        return true;
+    }
+
+
 }

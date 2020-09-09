@@ -1,9 +1,17 @@
 package com.example.obligatorio.Presentacion;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -44,9 +52,16 @@ public class Mascotas extends AppCompatActivity {
     private Animation fadeOut;
     private Animation fadeIn;
 
+    private int idconstante = 0;
+
     private TextView msjMuerte;
     private Button btnVolver;
     private ImageView imgMascotaMuerte;
+
+
+    private boolean CounterRunning = false;
+
+    private CountDownTimer countdownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +167,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                }, 5000);
+                }, 10000);
             }
         });
 
@@ -167,7 +182,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                }, 5000);
+                }, 10000);
             }
         });
 
@@ -175,12 +190,15 @@ public class Mascotas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int gif = Comer();
+                Controladora control = new Controladora(getApplicationContext());
+                control.DarComida();
+                CounterRunning = false;
                 Handler h = new Handler();
                 Glide.with(getApplicationContext()).load(gif).into(imgMascota);
                 h.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        CargarMascota();
+                        CargarMascotas();
                     }
                 }, 5000);
             }
@@ -197,7 +215,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                }, 5000);
+                }, 10000);
             }
         });
 
@@ -216,12 +234,23 @@ public class Mascotas extends AppCompatActivity {
         final Mascota mascotaActual = control.BuscarMascotaEspecifica(session.getMascota());
         final Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
         final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
+        CounterRunning = true;
 
-        if (tiempo > 0) {
-            CountDownTimer countdownTimer = new CountDownTimer(tiempo, 1000) {
+        if (tiempo > 0 && !mascotaActual.get_nombre().equals(null)) {
+            countdownTimer = new CountDownTimer(tiempo, 1000) {
+                boolean notificado = false;
                 @Override
                 public void onTick(long l) {
-                    txtNombre.setText("" + l / 1000);
+
+                    if (!CounterRunning)
+                    {
+                        this.cancel();
+                    }
+                    if (l < 170000 && !notificado) {
+                        crearCanalDeNotificaciones();
+                        Notificacion(mascotaActual, l);
+                        notificado = true;
+                    }
                 }
 
                 @Override
@@ -316,13 +345,13 @@ public class Mascotas extends AppCompatActivity {
                 gif = R.drawable.perro_ejercicio;
                 break;
             case "oso":
-                gif = R.drawable.oso_default;
+                gif = R.drawable.oso_ejercicio;
                 break;
             case "pez":
                 gif = R.drawable.pez_ejercicio;
                 break;
             default:
-                gif = R.drawable.gato_quieto;
+                gif = R.drawable.gato_ejercicio;
                 break;
         }
         return gif;
@@ -340,13 +369,13 @@ public class Mascotas extends AppCompatActivity {
                 gif = R.drawable.perro_jugando;
                 break;
             case "oso":
-                gif = R.drawable.oso_default;
+                gif = R.drawable.oso_jugando;
                 break;
             case "pez":
                 gif = R.drawable.pez_jugando;
                 break;
             default:
-                gif = R.drawable.pez_jugando;
+                gif = R.drawable.gato_jugando;
                 break;
         }
         return gif;
@@ -364,13 +393,13 @@ public class Mascotas extends AppCompatActivity {
                 gif = R.drawable.perro_comiendo;
                 break;
             case "oso":
-                gif = R.drawable.oso_default;
+                gif = R.drawable.oso_comiendo;
                 break;
             case "pez":
                 gif = R.drawable.pez_comiendo;
                 break;
             default:
-                gif = R.drawable.pez_comiendo;
+                gif = R.drawable.gato_comiendo;
                 break;
         }
         return gif;
@@ -379,6 +408,7 @@ public class Mascotas extends AppCompatActivity {
     public int Tomar() {
         Controladora control = new Controladora(getApplicationContext());
         Mascota mascota = control.BuscarMascotaEspecifica(session.getMascota());
+
         int gif;
         switch (mascota.get_tipo()) {
             case "gato":
@@ -388,15 +418,41 @@ public class Mascotas extends AppCompatActivity {
                 gif = R.drawable.perro_tomando;
                 break;
             case "oso":
-                gif = R.drawable.oso_default;
+                gif = R.drawable.oso_tomando;
                 break;
             case "pez":
                 gif = R.drawable.pez_tomando;
                 break;
             default:
-                gif = R.drawable.gato_quieto;
+                gif = R.drawable.gato_tomando;
                 break;
         }
         return gif;
+    }
+
+    public void crearCanalDeNotificaciones() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            {
+                CharSequence nombre = "Notificacion";
+                NotificationChannel canal = new NotificationChannel("notificacion", nombre, NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager notificacion = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificacion.createNotificationChannel(canal);
+            }
+        }
+        idconstante++;
+    }
+
+    public void Notificacion(Mascota mascota, long l) {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "notificacion");
+            builder.setSmallIcon(R.drawable.ic_notify_logo);
+            builder.setColor(Color.RED);
+            builder.setContentTitle("Hey!!! tu mascota " + mascota.get_nombre() + " esta por morir");
+            builder.setContentText("Tu mascota " + mascota.get_nombre() + " le quedan " + l/1000 + " segundos de vida");
+            builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+            NotificationManagerCompat notification = NotificationManagerCompat.from(getApplicationContext());
+            notification.notify(idconstante, builder.build());
+
+        idconstante++;
     }
 }

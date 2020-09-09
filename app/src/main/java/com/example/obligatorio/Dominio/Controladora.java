@@ -141,6 +141,18 @@ public class Controladora {
         return null;
     }
 
+    public void DarComida()
+    {
+        Mascota miMascota = BuscarMascotaEspecifica(miSession.getMascota());
+        mascotaPersistente.DarComida(miMascota);
+    }
+
+    public void DarAgua()
+    {
+        Mascota miMascota = BuscarMascotaEspecifica(miSession.getMascota());
+        mascotaPersistente.DarAgua(miMascota);
+    }
+
     public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4) {
         return preguntaPersistente.TraerPregunta(pCategoria, IdP1, IdP2, IdP3, IdP4);
     }

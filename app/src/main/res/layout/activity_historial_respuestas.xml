@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
-    tools:context=".Presentacion.Historial_Respuestas">
+    tools:context=".Presentacion.Historial_Respuestas"
+    android:paddingHorizontal="25dp"
+    android:paddingTop="20dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,14 +65,14 @@
             android:background="@drawable/inputs"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/verde"
+            android:backgroundTint="@color/violeta"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtPregunta1"
                 android:text="Pregunta"
                 android:gravity="center_horizontal">
@@ -91,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta1"
                 android:text="Respuesta"
                 android:gravity="center_horizontal">
@@ -103,14 +105,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
-            android:backgroundTint="@color/verde"
+            android:backgroundTint="@color/violeta"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtPregunta2"
                 android:text="Pregunta"
                 android:gravity="center_horizontal">
@@ -131,7 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta2"
                 android:text="Respuesta"
                 android:gravity="center_horizontal">
@@ -143,14 +145,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
-            android:backgroundTint="@color/verde"
+            android:backgroundTint="@color/violeta"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtPregunta3"
                 android:text="Pregunta"
                 android:gravity="center_horizontal">
@@ -171,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta3"
                 android:text="Respuesta"
                 android:gravity="center_horizontal">
@@ -183,14 +185,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
-            android:backgroundTint="@color/verde"
+            android:backgroundTint="@color/violeta"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtPregunta4"
                 android:text="Pregunta"
                 android:gravity="center_horizontal">
@@ -211,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta4"
                 android:text="Respuesta"
                 android:gravity="center_horizontal">
@@ -223,14 +225,14 @@
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
-            android:backgroundTint="@color/verde"
+            android:backgroundTint="@color/violeta"
             android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtPregunta5"
                 android:text="Pregunta">
             </TextView>
@@ -250,7 +252,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:textColor="#000"
+                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta5"
                 android:text="Respuesta"
                 android:gravity="center_horizontal">
