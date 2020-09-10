@@ -148,8 +148,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="30dp"
         android:backgroundTint="@color/colorPrimary"
-        android:padding="60dp"
-        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        android:src="@drawable/ic_volver_derecha"
         app:borderWidth="0dp" />
 
 

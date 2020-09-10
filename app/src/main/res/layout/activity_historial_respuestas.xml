@@ -7,264 +7,277 @@
     android:background="@drawable/fondo"
     android:orientation="vertical"
     tools:context=".Presentacion.Historial_Respuestas">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:orientation="horizontal">
+
         <ImageButton
+            android:id="@+id/btnCerrarHistorialRespuestas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCerrarHistorialRespuestas"
-            android:src="@drawable/cruz_close"
-            android:background="@android:color/transparent"></ImageButton>
+            android:background="@android:color/transparent"
+            android:src="@drawable/cruz_close"></ImageButton>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
 
-        android:layout_weight="1"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="20dp"
+        android:layout_weight="1">
+
         <LinearLayout
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp">
+            android:layout_weight="3">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"></ImageView>
+                android:src="@drawable/logo" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="0px"
-            android:layout_weight="7"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_weight="7"
             android:gravity="center">
+
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:paddingLeft="5dp"
-                android:textSize="30dp"
-                android:textColor="#000"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/modak"
-                android:text="Historial de Respuestas"></TextView>
+                android:paddingLeft="5dp"
+                android:text="Historial de Respuestas"
+                android:textColor="#000"
+                android:textSize="30dp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:paddingHorizontal="25dp"
         android:layout_height="0px"
         android:layout_weight="6"
-        android:orientation="vertical">
+        android:weightSum="10"
+        android:orientation="vertical"
+        android:paddingHorizontal="25dp">
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/violeta"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtPregunta1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Pregunta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
+
             </TextView>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:id="@+id/lytRespuesta1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/rojo"
-            android:layout_marginBottom="20dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Respuesta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
 
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtPregunta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Pregunta"
-                android:gravity="center_horizontal">
-            </TextView>
+                android:textAlignment="center"
+                android:textColor="#ffff"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta2"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/rojo"
-            android:layout_marginBottom="20dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Respuesta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
 
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtPregunta3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Pregunta"
-                android:gravity="center_horizontal">
-            </TextView>
+                android:textAlignment="center"
+                android:textColor="#ffff"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta3"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/rojo"
-            android:layout_marginBottom="20dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Respuesta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
 
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtPregunta4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Pregunta"
-                android:gravity="center_horizontal">
-            </TextView>
+                android:textAlignment="center"
+                android:textColor="#ffff"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta4"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/rojo"
-            android:layout_marginBottom="20dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
                 android:id="@+id/txtRespuesta4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:text="Respuesta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
 
             </TextView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0px"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/inputs"
-            android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/txtPregunta5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
-                android:id="@+id/txtPregunta5"
+                android:gravity="center_horizontal"
                 android:text="Pregunta"
-                android:gravity="center_horizontal">
-            </TextView>
+                android:textAlignment="center"
+                android:textColor="#ffff"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta5"
-            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/inputs"
             android:backgroundTint="@color/rojo"
-            android:layout_marginBottom="20dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/txtRespuesta5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#ffff"
-                android:id="@+id/txtRespuesta5"
+                android:gravity="center_horizontal"
                 android:text="Respuesta"
-                android:gravity="center_horizontal">
+                android:textAlignment="center"
+                android:textColor="#ffff">
 
             </TextView>
         </LinearLayout>
