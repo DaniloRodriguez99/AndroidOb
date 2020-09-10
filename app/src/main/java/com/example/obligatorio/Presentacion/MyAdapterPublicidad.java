@@ -17,12 +17,10 @@ import com.example.obligatorio.Common.Publicidad;
 import com.example.obligatorio.Dominio.Controladora;
 import com.example.obligatorio.R;
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class MyAdapterPublicidad extends BaseAdapter {
 
-    Intent i;
     Context context;
     private Controladora unaControladora;
     ArrayList<Publicidad> publicidades;
@@ -72,6 +70,8 @@ public class MyAdapterPublicidad extends BaseAdapter {
 
         list_txtTitulo.setText(item.get_titulo());
         list_txtDescripcion.setText(item.get_descripcion());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(item.get_imagen(), 0, item.get_imagen().length);
+        list_img.setImageBitmap(bitmap);
 
        /* ByteArrayInputStream imageStream = new ByteArrayInputStream(item.get_imagen());
         Bitmap laImage= BitmapFactory.decodeStream(imageStream);*/
@@ -88,24 +88,23 @@ public class MyAdapterPublicidad extends BaseAdapter {
             public void onClick(View view) {
 
                 unaControladora.bajaPublicidad(item);
-                i = new Intent(context,Administracion.class);
+                Intent i = new Intent(context,Administracion.class);
                 ((Administracion)context).finish();
                 context.startActivity(i);
 
             }
         });
-        list_but_modificar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                i = new Intent(context,Modificar_Publicidad.class);
-                i.putExtra("keyPublicidadId",item.get_id());
-                i.putExtra("keyPublicidadTitulo",list_txtTitulo.getText().toString());
-                i.putExtra("keyPublicidadDescripcion",list_txtDescripcion.getText().toString());
-                i.putExtra("keyPublicidadImagen",item.get_imagen());
-                context.startActivity(i);
-            }
-
-        });
+       list_but_modificar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent i = new Intent(context,Modificar_Publicidad.class);
+               i.putExtra("keyPublicidadId",item.get_id());
+               i.putExtra("keyPublicidadTitulo",list_txtTitulo.getText().toString());
+               i.putExtra("keyPublicidadDescripcion",list_txtDescripcion.getText().toString());
+               i.putExtra("keyPublicidadImagen",item.get_imagen());
+               context.startActivity(i);
+           }
+       });
         return convertView;
     }
 }

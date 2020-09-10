@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo"
     android:orientation="vertical"
-    tools:context=".Presentacion.Historial_Respuestas"
-    android:paddingHorizontal="25dp"
-    android:paddingTop="20dp">
+    tools:context=".Presentacion.Historial_Respuestas">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +22,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
+
         android:layout_weight="1"
         android:layout_marginTop="40dp">
         <LinearLayout
@@ -56,12 +55,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:paddingHorizontal="25dp"
         android:layout_height="0px"
         android:layout_weight="6"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
@@ -121,7 +122,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta2"
             android:orientation="horizontal"
@@ -142,7 +144,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
@@ -161,7 +164,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta3"
             android:orientation="horizontal"
@@ -182,7 +186,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
@@ -201,7 +206,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta4"
             android:orientation="horizontal"
@@ -222,7 +228,8 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:orientation="horizontal"
             android:backgroundTint="@color/violeta"
@@ -234,13 +241,15 @@
                 android:textAlignment="center"
                 android:textColor="#ffff"
                 android:id="@+id/txtPregunta5"
-                android:text="Pregunta">
+                android:text="Pregunta"
+                android:gravity="center_horizontal">
             </TextView>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:background="@drawable/inputs"
             android:id="@+id/lytRespuesta5"
             android:orientation="horizontal"

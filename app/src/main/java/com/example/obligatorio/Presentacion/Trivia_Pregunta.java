@@ -1,8 +1,10 @@
 package com.example.obligatorio.Presentacion;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,6 +31,7 @@ import java.util.List;
 public class Trivia_Pregunta extends AppCompatActivity {
 
     private Session session;
+    Dialog myDialog;
 
     private TextView txtPregunta;
     private TextView txtTimmer;
@@ -38,6 +41,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private Button Respuesta3;
     private Respuesta noResponde;
     private ImageButton btnSaltearPregunta;
+    private ImageButton btnSalirPreguntado;
 
     private CountDownTimer countDownTimer;
     private CountDownTimer count;
@@ -73,6 +77,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
         WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_trivia_pregunta);
         play();
+        myDialog = new Dialog(this);
         tiempoRestante  = 60000;
         controladora = new Controladora(getBaseContext());
         i = new Intent(this, Trivia_Ruleta.class);
@@ -81,6 +86,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
         txtPregunta = (TextView)findViewById(R.id.txtPreguntaTrivia);
         txtTimmer = (TextView)findViewById(R.id.txtTimmer);
         btnSaltearPregunta = (ImageButton)findViewById(R.id.btnSaltearPregunta);
+        btnSalirPreguntado = (ImageButton)findViewById(R.id.btnCerrarPreguntado);
 
         Respuesta1 = (Button)findViewById(R.id.boton1);
         Respuesta2 = (Button)findViewById(R.id.boton2);
@@ -115,6 +121,13 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 unaRespuesta = noResponde;//Setea la respuesta final como no respondida
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
+                finish();
+            }
+        });
+
+        btnSalirPreguntado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
@@ -209,20 +222,10 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 AltaTriviayHistorial();
                 countDownTimer.cancel();
 
-                count = new CountDownTimer(2000,1000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        finish();
-                    }
-                }.start();
                 Respuesta1.setOnClickListener(null);
                 Respuesta2.setOnClickListener(null);
                 Respuesta3.setOnClickListener(null);
+                btnSaltearPregunta.setOnClickListener(null);
 
             }
         });
@@ -237,21 +240,11 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 countDownTimer.cancel();
-                count = new CountDownTimer(2000,1000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        finish();
-                    }
-                }.start();
 
                 Respuesta1.setOnClickListener(null);
                 Respuesta2.setOnClickListener(null);
                 Respuesta3.setOnClickListener(null);
+                btnSaltearPregunta.setOnClickListener(null);
             }
         });
 
@@ -265,21 +258,11 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 AgregarAlHistorial();
                 AltaTriviayHistorial();
                 countDownTimer.cancel();
-                count = new CountDownTimer(2000,1000) {
-                    @Override
-                    public void onTick(long l) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-                        finish();
-                    }
-                }.start();
 
                 Respuesta1.setOnClickListener(null);
                 Respuesta2.setOnClickListener(null);
                 Respuesta3.setOnClickListener(null);
+                btnSaltearPregunta.setOnClickListener(null);
             }
         });
 
@@ -355,11 +338,23 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 stop();
                 Correcta();
                 Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+                count = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
 
             } else {
                 stop();
                 Incorrecta();
                 Respuesta1.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+                MostrarPublicidad(Respuesta1);
             }
             break;
             case 2:
@@ -367,10 +362,22 @@ public class Trivia_Pregunta extends AppCompatActivity {
                     stop();
                     Correcta();
                     Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+                    count = new CountDownTimer(2000,1000) {
+                        @Override
+                        public void onTick(long l) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            finish();
+                        }
+                    }.start();
                 } else {
                     stop();
                     Incorrecta();
                     Respuesta2.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+                    MostrarPublicidad(Respuesta2);
                 }
                 break;
             case 3:
@@ -378,10 +385,22 @@ public class Trivia_Pregunta extends AppCompatActivity {
                 stop();
                 Correcta();
                 Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_correcta));
+                count = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
             } else {
                 stop();
                 Incorrecta();
                 Respuesta3.setBackground(getResources().getDrawable(R.drawable.respuesta_incorrecta));
+                MostrarPublicidad(Respuesta3);
             }
             break;
 
@@ -489,6 +508,44 @@ public class Trivia_Pregunta extends AppCompatActivity {
             player.release();
             player = null;
         }
+    }
+
+    public void MostrarPublicidad(View v)
+    {
+        TextView txtCerrar;
+        Button btnIrPublicidad;
+        myDialog.setContentView(R.layout.publicidad_mostrada);
+        txtCerrar = (TextView)myDialog.findViewById(R.id.txtCerrarPublicidad);
+        btnIrPublicidad = (Button)myDialog.findViewById(R.id.btnVerPublicidad);
+
+        txtCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDialog.dismiss();
+                CountDownTimer contador = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
+            }
+        });
+
+        btnIrPublicidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("http://www.stackoverflow.com/"));
+                startActivity(viewIntent);
+            }
+        });
+        myDialog.show();
     }
 
     @Override

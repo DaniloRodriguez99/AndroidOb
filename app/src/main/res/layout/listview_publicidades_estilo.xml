@@ -15,20 +15,24 @@
 
         <ImageView
             android:layout_gravity="center_vertical"
-            android:layout_width="100dp"
+            android:id="@+id/lstImgPublicidad"
+            android:layout_width="0px"
+            android:layout_weight="0.5"
             android:layout_height="100dp"
             android:layout_marginRight="20dp"
             android:src="@drawable/gato_jugando" />
 
         <LinearLayout
             android:layout_gravity="center_vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/lstTxtTituloPublicidad"
                 android:text="Titulo"
                 android:textSize="30dp"
                 android:layout_marginBottom="5dp"/>
@@ -36,6 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/lstTxtDescripcionPublicidad"
                 android:text="Lorem ipsum asdasdas asda as dasd asd asd as d"
                 android:layout_marginBottom="15dp"/>
 
@@ -48,12 +53,14 @@
                     android:layout_width="100dp"
                     android:layout_height="35dp"
                     android:background="@drawable/inputs"
+                    android:id="@+id/lstBtnEditarPublicidad"
                     android:layout_marginRight="10dp"
                     android:src="@mipmap/modificarimg_foreground"/>
 
                 <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="35dp"
+                    android:id="@+id/lstBtnBajaPublicidad"
                     android:background="@drawable/eliminarbackground"
                     android:src="@mipmap/eliminarimg_foreground"
                     >

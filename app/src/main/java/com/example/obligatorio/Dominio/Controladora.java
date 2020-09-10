@@ -100,6 +100,16 @@ public class Controladora {
         return mascotaPersistente.bajaMascota(BuscarMascotaEspecifica(id));
     }
 
+    public boolean bajaPublicidad(Publicidad pPublicidad)
+    {
+        return publicidadPersistente.BajaPublicidad(pPublicidad);
+    }
+
+    public boolean modificarPublicidad(Publicidad pPublicidad)
+    {
+        return publicidadPersistente.ModificarPublicidad(pPublicidad);
+    }
+
     public long TiempoDeVida()
     {
         return mascotaPersistente.TiempoDeVida(miSession.getMascota());
@@ -185,6 +195,11 @@ public class Controladora {
     public boolean AltaPublicidad(Publicidad pPublicidad)
     {
         return publicidadPersistente.AltaPublicidad(pPublicidad);
+    }
+
+    public ArrayList<Publicidad>TraerPublicidades()
+    {
+        return publicidadPersistente.TraerPublicidades();
     }
 
 }

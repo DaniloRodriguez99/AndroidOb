@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 public class Publicidad implements Serializable {
 
+    private int _id;
+
+
     private String _titulo;
     private String _descripcion;
     private byte[] _imagen;
@@ -12,6 +15,14 @@ public class Publicidad implements Serializable {
         this._titulo = _titulo;
         this._descripcion = _descripcion;
         this._imagen = _imagen;
+    }
+    public Publicidad(){}
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
     }
 
     public String get_titulo() {

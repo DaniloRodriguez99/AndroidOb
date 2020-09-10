@@ -92,9 +92,9 @@ public class Alta_Publicidad extends AppCompatActivity {
                     Publicidad unaPublicidad = new Publicidad(Titulo,Descripcion,Imagen);
                     if(unaControladora.AltaPublicidad(unaPublicidad) && !Titulo.equals("") && !Descripcion.equals("")) {
                         Toast.makeText(getBaseContext(), "Agregada con éxito", Toast.LENGTH_SHORT).show();
-                        txtTitulo.setText("");
-                        txtDescripcion.setText("");
-                        imagen.setImageResource(R.drawable.imgaqui);
+                        Intent i = new Intent(Alta_Publicidad.this,Administracion.class);
+                        finish();
+                        startActivity(i);
                     }else{Toast.makeText(getBaseContext(), "No se ha podido agregar, asegurese de estar rellenando bien los campos", Toast.LENGTH_SHORT).show();}
                 }catch (Exception ex)
                 {

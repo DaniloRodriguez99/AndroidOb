@@ -10,4 +10,6 @@
     <color name="violetaclaro">#B032E7</color>
     <color name="violeta">#574BBC</color>
     <color name="Blanco">#fff</color>
+    <color name="bluedark">#2f333f</color>
+    <color name="bluelight">#49acd5</color>
 </resources>

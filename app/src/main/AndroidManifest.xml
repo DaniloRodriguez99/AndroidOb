@@ -21,6 +21,7 @@
         <activity android:name=".Presentacion.Trivia_Pregunta" />
         <activity android:name=".Presentacion.Trivia_Ruleta" />
         <activity android:name=".Presentacion.Registro" />
+        <activity android:name=".Presentacion.Modificar_Publicidad"></activity>
         <activity android:name=".Presentacion.Load" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -36,14 +36,27 @@
                 android:fontFamily="@font/modak"
                 tools:ignore="RtlCompat">
             </TextView>
-                <ImageButton
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true">
+                    <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/btnSaltearPregunta"
-                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
                     android:src="@drawable/saltearpregunta"
-                    android:background="@android:color/transparent"
-                    android:layout_alignParentRight="true"></ImageButton>
+                    android:background="@android:color/transparent"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnCerrarPreguntado"
+                        android:src="@drawable/cruz_close"
+                        android:background="@android:color/transparent">
+                    </ImageButton>
+                </LinearLayout>
+
             </RelativeLayout>
 
         </LinearLayout>
