@@ -92,22 +92,37 @@ public class pMascota extends pConexion {
         }
     }
 
-    public long TiempoDeVida(int id)
+    public long TiempoDesdeQueTomo(int id)
+    {
+        this.seleccionarDatos("select Cast ((julianday(Current_Timestamp) - julianday(ultvtomo)) * 24 * 60 * 60 As Integer)" +
+                " as tiempo from mascota where idmascota=" + id);
+
+        long segundosQuePasaronDesdeTomo = 0;
+
+        while(!c.isAfterLast())
+        {
+            segundosQuePasaronDesdeTomo = c.getLong(0);
+            c.moveToNext();
+        }
+
+        return segundosQuePasaronDesdeTomo * 1000;
+
+    }
+
+    public long TiempoDesdeQueComio(int id)
     {
         this.seleccionarDatos("select Cast ((julianday(Current_Timestamp) - julianday(ultvcomio)) * 24 * 60 * 60 As Integer)" +
                 " as tiempo from mascota where idmascota=" + id);
 
-        long segundosQuePasaron = 0;
+        long segundosQuePasaronDesdeComio = 0;
 
         while(!c.isAfterLast())
         {
-            segundosQuePasaron = c.getLong(0);
+            segundosQuePasaronDesdeComio = c.getLong(0);
             c.moveToNext();
         }
 
-        long milisegundosQuePasaron = segundosQuePasaron * 1000;
-
-        return milisegundosQuePasaron;
+        return segundosQuePasaronDesdeComio * 1000;
 
     }
 

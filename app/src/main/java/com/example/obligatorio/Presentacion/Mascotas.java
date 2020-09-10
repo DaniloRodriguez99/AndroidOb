@@ -208,6 +208,9 @@ public class Mascotas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int gif = Tomar();
+                Controladora control = new Controladora(getApplicationContext());
+                control.DarAgua();
+                CounterRunning = false;
                 Handler h = new Handler();
                 Glide.with(getApplicationContext()).load(gif).into(imgMascota);
                 h.postDelayed(new Runnable() {
@@ -215,7 +218,7 @@ public class Mascotas extends AppCompatActivity {
                     public void run() {
                         CargarMascota();
                     }
-                }, 10000);
+                }, 5000);
             }
         });
 

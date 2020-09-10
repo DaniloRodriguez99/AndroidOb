@@ -112,7 +112,17 @@ public class Controladora {
 
     public long TiempoDeVida()
     {
-        return mascotaPersistente.TiempoDeVida(miSession.getMascota());
+        long tomo = this.mascotaPersistente.TiempoDesdeQueTomo(miSession.getMascota());
+        long comio = this.mascotaPersistente.TiempoDesdeQueComio(miSession.getMascota());
+
+        if (tomo > comio)
+        {
+            return tomo;
+        }
+        else
+        {
+            return comio;
+        }
     }
 
     public int NroMascotasDeUnUsuario() {
