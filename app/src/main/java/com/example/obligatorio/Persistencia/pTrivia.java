@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class pTrivia extends pConexion{
     public pTrivia(Context contexto){super(contexto);}
-    private Controladora controladora;
+
     public int ObtenerUltimoIdTrivia()
     {
         int id;

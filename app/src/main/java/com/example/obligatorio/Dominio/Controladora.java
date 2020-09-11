@@ -93,9 +93,6 @@ public class Controladora {
         return mascotaPersistente.buscarMascotaEspecifica(idmascota, buscarUsuarioPorId(miSession.getIdUsuario()));
     }
 
-    public boolean bajaMascota(Mascota mascota){
-        return mascotaPersistente.bajaMascota(mascota);
-    }
     public boolean bajaMascota(int id){
         return mascotaPersistente.bajaMascota(BuscarMascotaEspecifica(id));
     }
@@ -175,11 +172,6 @@ public class Controladora {
 
     public Pregunta traerPreguntasTrivia(String pCategoria, int IdP1, int IdP2, int IdP3, int IdP4) {
         return preguntaPersistente.TraerPregunta(pCategoria, IdP1, IdP2, IdP3, IdP4);
-    }
-
-    public Pregunta buscarPregunta(int pId)
-    {
-        return preguntaPersistente.BuscarPreguntaEspecifica(pId);
     }
 
     public ArrayList<Respuesta> traerRespuestas(Pregunta pPregunta)
