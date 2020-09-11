@@ -100,7 +100,6 @@ public class MyAdapterPublicidad extends BaseAdapter {
                i.putExtra("keyPublicidadTitulo",list_txtTitulo.getText().toString());
                i.putExtra("keyPublicidadDescripcion",list_txtDescripcion.getText().toString());
                i.putExtra("keyPublicidadImagen",item.get_imagen());
-               ((Administracion)context).finish();
                context.startActivity(i);
            }
        });

@@ -36,10 +36,15 @@ public class Administracion extends AppCompatActivity {
         listaDePublicidades = (ListView)findViewById(R.id.lstViewPublicidades);
         btnCerrarListadoPublicidades = (ImageButton)findViewById(R.id.btnCerrarListadoPublicidades);
         fbaIrAltaPublicidad = (FloatingActionButton)findViewById(R.id.btnIrAltaPublicidad);
+
+
         btnCerrarListadoPublicidades.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 finish();
+                Intent i = new Intent(Administracion.this, MainActivity.class);
+                startActivity(i);
             }
         });
 
