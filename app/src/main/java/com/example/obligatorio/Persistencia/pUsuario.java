@@ -47,6 +47,34 @@ public class pUsuario extends pConexion {
         }
         return null;
     }
+    public Usuario buscarUsuarioPorUser(String pUsuario)
+    {
+        try
+        {
+            this.seleccionarDatos("Select id,user,pass,email,admin from usuario where user = '" + pUsuario + "';");
+
+            while(!c.isAfterLast())
+            {
+                Usuario unUsuario = new Usuario();
+                unUsuario.set_id(c.getInt(0));
+                unUsuario.set_user(c.getString(1));
+                unUsuario.set_pass(c.getString(2));
+                unUsuario.set_email(c.getString(3));
+                if(c.getString(4).equals("1"))
+                {
+                    unUsuario.set_admin(true);
+                }else
+                if(c.getString(4).equals("0")){unUsuario.set_admin(false); }
+                c.close();
+                return unUsuario;
+            }
+
+        }catch (Exception ex)
+        {
+            throw new Error(ex.getMessage());
+        }
+        return null;
+    }
     public Usuario Login (Usuario pusuario)
     {
 

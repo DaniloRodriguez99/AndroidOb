@@ -80,44 +80,44 @@ public class Registro extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Controladora control = new Controladora(getBaseContext());
-
+                Controladora control = new Controladora(getBaseContext());String user = usuario.getText().toString();
+                String contra = contra1.getText().toString();
+                String mail = email.getText().toString();
+                Usuario unUsuario = control.buscarUsuarioPorUser(user);
+                if(unUsuario == null) {
                 if (contra1.getText().toString().trim().equals(contra2.getText().toString().trim())) {
+                    unUsuario = new Usuario(user,contra,mail);
+                        if (control.AltaUsuario(unUsuario)) {
+                            LimpiarRegistro();
+                            content.startAnimation(fadeOut);
+                            content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
+                            checkloadAnimation.setAnimation(fadeIn);
+                            checkloadAnimation.setVisibility(View.VISIBLE); /*Hacemos visible la primera animacion que es una animacion de carga*/
+                            checkloadAnimation.playAnimation();
 
-                    String user = usuario.getText().toString();
-                    String contra = contra1.getText().toString();
-                    String mail = email.getText().toString();
-                    Usuario unUsuario = new Usuario(user, contra, mail);
+                            final Handler h = new Handler();
+                            h.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    checkloadAnimation.setVisibility(View.INVISIBLE);/*Hacemos invisible la animacion load */
+                                    checkAnimation.setVisibility(View.VISIBLE); /*y hacemos aparecer la animacion check*/
+                                    checkAnimation.playAnimation();
+                                    h.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            checkAnimation.startAnimation(fadeOut);
+                                            checkAnimation.setVisibility(View.INVISIBLE); /*hacmeos invisible la animacion*/
+                                            content.startAnimation(fadeIn); /* hacemos reaparecer el layout container con un animacion de fade in*/
+                                            content.setVisibility(View.VISIBLE);
 
-                    if (control.AltaUsuario(unUsuario)) {
+                                        }
+                                    }, 2500);
+                                }
+                            }, 1000);
+                        } else {
+                            Toast.makeText(getBaseContext(), "No se pudo completar su registro.", Toast.LENGTH_LONG).show();
+                        }
 
-                        content.startAnimation(fadeOut);
-                        content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
-                        checkloadAnimation.setAnimation(fadeIn);
-                        checkloadAnimation.setVisibility(View.VISIBLE); /*Hacemos visible la primera animacion que es una animacion de carga*/
-                        checkloadAnimation.playAnimation();
-
-                        final Handler h = new Handler();
-                        h.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                checkloadAnimation.setVisibility(View.INVISIBLE);/*Hacemos invisible la animacion load */
-                                checkAnimation.setVisibility(View.VISIBLE); /*y hacemos aparecer la animacion check*/
-                                checkAnimation.playAnimation();
-                                h.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        checkAnimation.startAnimation(fadeOut);
-                                        checkAnimation.setVisibility(View.INVISIBLE); /*hacmeos invisible la animacion*/
-                                        content.startAnimation(fadeIn); /* hacemos reaparecer el layout container con un animacion de fade in*/
-                                        content.setVisibility(View.VISIBLE);
-
-                                    }
-                                }, 2500);
-                            }
-                        }, 1000);
-                    }else{
-                        Toast.makeText(getBaseContext(),"No se pudo completar su registro.",Toast.LENGTH_LONG).show();}
                 } else {
                     content.startAnimation(fadeOut);
                     content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
@@ -145,7 +145,15 @@ public class Registro extends AppCompatActivity {
                         }
                     }, 1000);
                 }
+                }else{Toast.makeText(getBaseContext(), "Usuario ya registrado,intente con otro.", Toast.LENGTH_LONG).show();}
             }
         });
+    }
+    public void LimpiarRegistro()
+    {
+        usuario.setText("");
+        contra1.setText("");
+        contra2.setText("");
+        email.setText("");
     }
 }

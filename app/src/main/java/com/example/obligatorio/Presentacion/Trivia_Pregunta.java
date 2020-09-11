@@ -2,12 +2,14 @@ package com.example.obligatorio.Presentacion;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -45,7 +47,6 @@ public class Trivia_Pregunta extends AppCompatActivity {
     private ImageButton btnSalirPreguntado;
 
     private CountDownTimer countDownTimer;
-    private CountDownTimer count;
 
     private View fondopreguntados;
     private long tiempoRestante;
@@ -333,6 +334,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
 
     public void DarColorRespuesta(int botonPresionado)
     {
+        CountDownTimer count;
         switch(botonPresionado) {
             case 1:
             if (listaRespuestas.get(0).is_correcta()) {
@@ -525,7 +527,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
         btnIrPublicidad = (Button)myDialog.findViewById(R.id.btnVerPublicidad);
         txtTitulo = (TextView)myDialog.findViewById(R.id.txtTituloPublicidadRandom);
         txtDescripcion = (TextView)myDialog.findViewById(R.id.txtDescripcionPublicidadRandom);
-
+        txtDescripcion.setMovementMethod(new ScrollingMovementMethod());
         txtTitulo.setText(unaPublicidad.get_titulo());
         txtDescripcion.setText(unaPublicidad.get_descripcion());
 
@@ -533,6 +535,12 @@ public class Trivia_Pregunta extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 myDialog.dismiss();
+            }
+        });
+
+        myDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
                 CountDownTimer contador = new CountDownTimer(2000,1000) {
                     @Override
                     public void onTick(long l) {
@@ -552,7 +560,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
             public void onClick(View view) {
                 Intent viewIntent =
                         new Intent("android.intent.action.VIEW",
-                                Uri.parse("https://www.psicologia-online.com/como-ser-buena-persona-cada-dia-3569.html"));
+                                Uri.parse("https://stackoverflow.com/"));
                 startActivity(viewIntent);
             }
         });

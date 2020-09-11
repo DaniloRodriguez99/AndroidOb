@@ -73,6 +73,9 @@ public class Controladora {
     public Usuario buscarUsuarioPorId(int pId) {
         return usuarioPersistente.buscarUsuarioPorId(pId);
     }
+    public Usuario buscarUsuarioPorUser(String pUser) {
+        return usuarioPersistente.buscarUsuarioPorUser(pUser);
+    }
 
     public ArrayList<Mascota> BuscarMascotasDeUnUsuario() {
         return mascotaPersistente.buscarMascotasDeUnUsuario(buscarUsuarioPorId(miSession.getIdUsuario()));
