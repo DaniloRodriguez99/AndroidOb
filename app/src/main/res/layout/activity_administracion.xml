@@ -11,13 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnCerrarListadoPublicidades"
             android:src="@drawable/cruz_close"
-            android:background="@android:color/transparent"></ImageButton>
+            android:background="@android:color/transparent"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +36,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"></ImageView>
+                android:src="@drawable/logo"/>
         </LinearLayout>
 
         <LinearLayout
@@ -48,7 +50,7 @@
                 android:fontFamily="@font/modak"
                 android:text="Publicidades"
                 android:textColor="#000"
-                android:textSize="40dp"></TextView>
+                android:textSize="40dp"/>
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout
@@ -61,7 +63,7 @@
                 android:layout_weight="1"
                 android:layout_width="0px"
                 android:layout_height="wrap_content"
-                android:id="@+id/lstViewPublicidades"></ListView>
+                android:id="@+id/lstViewPublicidades"/>
         </LinearLayout>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
