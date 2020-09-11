@@ -306,7 +306,7 @@ public class Mascotas extends AppCompatActivity {
 
     private void TiempoDeVida() {
         final Controladora control = new Controladora(getApplicationContext());
-        long tiempo = 180000 - control.TiempoDeVida();
+        long tiempo = ((60000 * 60)*24) - control.TiempoDeVida();
         final Mascota mascotaActual = control.BuscarMascotaEspecifica(session.getMascota());
         final Animation fadeOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out);
         final Animation fadeIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in);
@@ -322,7 +322,7 @@ public class Mascotas extends AppCompatActivity {
                     {
                         this.cancel();
                     }
-                    if (l < 170000 && !notificado) {
+                    if (l < (60000 * 60) && !notificado) {
                         crearCanalDeNotificaciones();
                         Notificacion(mascotaActual, l);
                         notificado = true;
