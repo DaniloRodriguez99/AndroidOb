@@ -33,6 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:textAlignment="center"
+                android:id="@+id/txtTituloPublicidadRandom"
                 android:textSize="18sp"
                 android:layout_height="0px"
                 android:layout_weight="1"
@@ -44,6 +45,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:textAlignment="center"
+                android:id="@+id/txtDescripcionPublicidadRandom"
                 android:layout_height="0px"
                 android:layout_weight="1"
                 android:textColor="@color/Blanco"

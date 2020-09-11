@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.obligatorio.Common.Historial;
+import com.example.obligatorio.Common.Publicidad;
 import com.example.obligatorio.Common.Session;
 import com.example.obligatorio.Common.Trivia;
 import com.example.obligatorio.Dominio.Controladora;
@@ -514,9 +515,19 @@ public class Trivia_Pregunta extends AppCompatActivity {
     {
         TextView txtCerrar;
         Button btnIrPublicidad;
+        TextView txtTitulo;
+        TextView txtDescripcion;
+        Publicidad unaPublicidad = controladora.TraerPublicidadRandom();
+
         myDialog.setContentView(R.layout.publicidad_mostrada);
+
         txtCerrar = (TextView)myDialog.findViewById(R.id.txtCerrarPublicidad);
         btnIrPublicidad = (Button)myDialog.findViewById(R.id.btnVerPublicidad);
+        txtTitulo = (TextView)myDialog.findViewById(R.id.txtTituloPublicidadRandom);
+        txtDescripcion = (TextView)myDialog.findViewById(R.id.txtDescripcionPublicidadRandom);
+
+        txtTitulo.setText(unaPublicidad.get_titulo());
+        txtDescripcion.setText(unaPublicidad.get_descripcion());
 
         txtCerrar.setOnClickListener(new View.OnClickListener() {
             @Override

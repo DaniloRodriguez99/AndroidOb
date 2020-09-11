@@ -204,4 +204,9 @@ public class Controladora {
         return publicidadPersistente.TraerPublicidades();
     }
 
+    public Publicidad TraerPublicidadRandom()
+    {
+        return publicidadPersistente.TraerPublicidadRandom();
+    }
+
 }

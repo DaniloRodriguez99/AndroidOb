@@ -51,12 +51,6 @@ public class Administracion extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        /*ArrayList<String> datos = new ArrayList<>();
-        datos.add("Publicidad 1");
-        datos.add("Publicidad 2");
-        datos.add("Publicidad 3");
-        datos.add("Publicidad 4");
-        datos.add("Publicidad 5");*/
 
         adaptador = new MyAdapterPublicidad(this, ListaDePublicidades);
 

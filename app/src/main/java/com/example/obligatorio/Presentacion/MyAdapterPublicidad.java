@@ -70,15 +70,13 @@ public class MyAdapterPublicidad extends BaseAdapter {
 
         list_txtTitulo.setText(item.get_titulo());
         list_txtDescripcion.setText(item.get_descripcion());
-        Bitmap bitmap = BitmapFactory.decodeByteArray(item.get_imagen(), 0, item.get_imagen().length);
-        list_img.setImageBitmap(bitmap);
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(item.get_imagen(), 0, item.get_imagen().length);
+        //list_img.setImageBitmap(bitmap);
+        // No funciona el seteo de imagenes asi que queda comentado.
 
-       /* ByteArrayInputStream imageStream = new ByteArrayInputStream(item.get_imagen());
-        Bitmap laImage= BitmapFactory.decodeStream(imageStream);*/
 
-        byte[] imgBytes;
-        Bitmap bm = BitmapFactory.decodeByteArray(item.get_imagen(), 0, item.get_imagen().length);
-        list_img.setImageBitmap(bm);
+
+        list_img.setImageResource(R.drawable.imgaqui);
 
         //list_img.setImageBitmap(laImage);
 

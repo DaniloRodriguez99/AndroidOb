@@ -32,6 +32,24 @@ public class pPublicidad extends pConexion{
         }
     }
 
+    public Publicidad TraerPublicidadRandom()
+    {
+        Publicidad unaPublicidad;
+        try{
+            this.seleccionarDatos("select id,titulo,descripcion,imagen from publicidad order by RANDOM() LIMIT 1");
+
+                unaPublicidad = new Publicidad();
+                unaPublicidad.set_id(c.getInt(0));
+                unaPublicidad.set_titulo(c.getString(1));
+                unaPublicidad.set_descripcion(c.getString(2));
+                unaPublicidad.set_imagen(c.getBlob(3));
+            c.close();
+            return unaPublicidad;
+        }catch (Exception ex){
+            throw new Error(ex.getMessage());
+        }
+    }
+
     public boolean AltaPublicidad(Publicidad pPublicidad)
     {
         try {
