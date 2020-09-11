@@ -552,7 +552,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
             public void onClick(View view) {
                 Intent viewIntent =
                         new Intent("android.intent.action.VIEW",
-                                Uri.parse("http://www.stackoverflow.com/"));
+                                Uri.parse("https://www.psicologia-online.com/como-ser-buena-persona-cada-dia-3569.html"));
                 startActivity(viewIntent);
             }
         });

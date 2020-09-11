@@ -35,6 +35,7 @@ public class Modificar_Publicidad extends AppCompatActivity {
     private EditText descripcion;
     private ImageButton btnCerrarModificarPublicidades;
     private ImageView imvPublicidadAModificar;
+    private ImageButton btnRotarImagen;
     private FloatingActionButton btnSeleccionarImagen;
     private Button btnModificar;
     final int REQUEST_CODE_GALLERY = 999;
@@ -48,6 +49,7 @@ public class Modificar_Publicidad extends AppCompatActivity {
         btnCerrarModificarPublicidades = (ImageButton)findViewById(R.id.btnCerrarModificarPublicidades);
         btnModificar = (Button)findViewById(R.id.btnModificarPublicidad);
         imvPublicidadAModificar = (ImageView)findViewById(R.id.imvPublicidadModificar);
+        btnRotarImagen = (ImageButton)findViewById(R.id.btnGirarPublicidadModificar);
         btnSeleccionarImagen = (FloatingActionButton)findViewById(R.id.btnSeleccionarImagenAModificar);
 
         Bundle extras = getIntent().getExtras();
@@ -81,6 +83,13 @@ public class Modificar_Publicidad extends AppCompatActivity {
                     finish();
                     startActivity(i);
                 }
+            }
+        });
+
+        btnRotarImagen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imvPublicidadAModificar.setRotation(imvPublicidadAModificar.getRotation() + 90);
             }
         });
 
