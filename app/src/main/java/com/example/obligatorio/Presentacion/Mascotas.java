@@ -6,6 +6,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 
 public class Mascotas extends AppCompatActivity {
 
+    Dialog myDialog;
     private ImageView imgMascota;
     private TextView txtNombre;
     private ImageButton adelante;
@@ -45,6 +47,7 @@ public class Mascotas extends AppCompatActivity {
     private FloatingActionButton btnEjercicio;
     private FloatingActionButton btnJugar;
     private FloatingActionButton btnCrear;
+    private FloatingActionButton btnSalir;
     private Button btnTrivia;
     private Session session;
     private LinearLayout lytContent;
@@ -73,6 +76,7 @@ public class Mascotas extends AppCompatActivity {
 
         /*Asignamos las variables a los elementos del xml*/
 
+        myDialog = new Dialog(this);
         imgMascota = (ImageView) findViewById(R.id.imgMascota_Mascotas);
         txtNombre = (TextView) findViewById(R.id.txtNombre_Mascotas);
         adelante = (ImageButton) findViewById(R.id.adelante_flecha_Mascotas);
@@ -83,6 +87,7 @@ public class Mascotas extends AppCompatActivity {
         btnJugar = (FloatingActionButton) findViewById(R.id.btnJugar_Mascotas);
         btnTrivia = (Button) findViewById(R.id.btnTrivia_Mascotas);
         btnCrear = (FloatingActionButton) findViewById(R.id.btnCrear_Mascotas);
+        btnSalir = (FloatingActionButton)findViewById(R.id.btn_SalirALogin);
         lytContent = (LinearLayout) findViewById(R.id.lytContenido_Mascotas);
 
 
@@ -219,6 +224,74 @@ public class Mascotas extends AppCompatActivity {
                         CargarMascota();
                     }
                 }, 5000);
+            }
+        });
+
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button aceptarSalir;
+                Button cancelarSalir;
+
+                myDialog.setContentView(R.layout.popupcerrarsesion);
+                aceptarSalir = (Button) myDialog.findViewById(R.id.btnAceptarCerrarSesion);
+                cancelarSalir = (Button) myDialog.findViewById(R.id.btnCancelarSalirSesion);
+
+                aceptarSalir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(Mascotas.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                });
+
+                cancelarSalir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        myDialog.dismiss();
+                    }
+                });
+                myDialog.show();
+
+                /*
+
+                 TextView txtCerrar;
+        Button btnIrPublicidad;
+        myDialog.setContentView(R.layout.publicidad_mostrada);
+        txtCerrar = (TextView)myDialog.findViewById(R.id.txtCerrarPublicidad);
+        btnIrPublicidad = (Button)myDialog.findViewById(R.id.btnVerPublicidad);
+
+        txtCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDialog.dismiss();
+                CountDownTimer contador = new CountDownTimer(2000,1000) {
+                    @Override
+                    public void onTick(long l) {
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        finish();
+                    }
+                }.start();
+            }
+        });
+
+        btnIrPublicidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent viewIntent =
+                        new Intent("android.intent.action.VIEW",
+                                Uri.parse("http://www.stackoverflow.com/"));
+                startActivity(viewIntent);
+            }
+        });
+        myDialog.show();
+
+                 */
             }
         });
 

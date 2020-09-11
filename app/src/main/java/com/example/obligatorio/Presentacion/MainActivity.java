@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.obligatorio.Common.Usuario;
@@ -113,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }, 2500);
 
+                }else{
+                    Toast.makeText(getBaseContext(),"Los datos ingresados no estan en nuestra base de datos, asegurese de estar ingresando bien los datos.",Toast.LENGTH_LONG).show();
                 }
 
             }
