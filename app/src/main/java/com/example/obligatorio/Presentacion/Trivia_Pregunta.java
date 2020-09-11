@@ -128,7 +128,7 @@ public class Trivia_Pregunta extends AppCompatActivity {
         btnSalirPreguntado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                MostrarAdvertenciaSalir(btnSalirPreguntado);
             }
         });
 
@@ -543,6 +543,32 @@ public class Trivia_Pregunta extends AppCompatActivity {
                         new Intent("android.intent.action.VIEW",
                                 Uri.parse("http://www.stackoverflow.com/"));
                 startActivity(viewIntent);
+            }
+        });
+        myDialog.show();
+    }
+
+    public void MostrarAdvertenciaSalir(View v)
+    {
+        Button btnAceptar;
+        Button btnCancelar;
+        myDialog.setContentView(R.layout.popupsaliraseleccionmascota);
+        btnAceptar = (Button)myDialog.findViewById(R.id.btnAceptarSaliraMascota);
+        btnCancelar = (Button)myDialog.findViewById(R.id.btnCancelarQuedarse);
+
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Trivia_Pregunta.this, Mascotas.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDialog.dismiss();
             }
         });
         myDialog.show();

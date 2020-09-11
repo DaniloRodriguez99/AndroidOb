@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.obligatorio.Common.Usuario;
@@ -115,7 +116,8 @@ public class Registro extends AppCompatActivity {
                                 }, 2500);
                             }
                         }, 1000);
-                    }
+                    }else{
+                        Toast.makeText(getBaseContext(),"No se pudo completar su registro.",Toast.LENGTH_LONG).show();}
                 } else {
                     content.startAnimation(fadeOut);
                     content.setVisibility(View.INVISIBLE); /*Hacemos invisible el layout contenedor*/
